@@ -1,0 +1,12 @@
+﻿@model IEcAbstractSeo
+@{ 
+    EcGlobalSettings configPage =  (EcGlobalSettings) ViewData["GlobalSettings"];
+
+    string metaTitleSuffix = Model.MetaTitleSuffix.NullIfEmpty() ?? configPage.MetaTitleSuffix.EmptyIfNull();
+    string metaDescription = Model.MetaDescription.NullIfEmpty() ?? configPage.MetaDescription.EmptyIfNull();
+    string metaTitle = Model.MetaTitle.NullIfEmpty() ?? Model.Name;
+    metaTitle += metaTitleSuffix;
+
+}
+<title>@metaTitle</title>
+<meta name="description" content="@metaDescription">

@@ -1,0 +1,75 @@
+﻿@inherits UmbracoViewPage<EcSiteMapSection>
+@using ClientDependency.Core.Mvc
+@*@using Merchello.Core*@
+@{
+
+    Html.RequiresCss("~/styles/css/SitemapSection.css");
+
+    string whitelistedDocumentTypeList = Model.WhitelistedDocumentTypes;
+    string[] whitelistedDocumentTypes = (!String.IsNullOrEmpty(whitelistedDocumentTypeList)) ? whitelistedDocumentTypeList.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries) : new string[] { };
+
+    int maxSiteMapDepth = Model.HasValue("maxSiteMapDepth") ? Model.Value<int>("maxSiteMapDepth") : int.MaxValue;
+    IPublishedContent siteHomePage = Model.Root();
+
+    // Get all the sitemap entries so it can be formatted into rows for display.
+    List<IPublishedContent> sitemap = new List<IPublishedContent>();
+    sitemap.Add(siteHomePage);
+    @GetSitemapEntriesForChildren(siteHomePage, maxSiteMapDepth, whitelistedDocumentTypes, sitemap);
+
+}
+<section class="page-section sitemap-section container">
+    @RenderSiteMapEntries(sitemap)
+</section>
+
+
+@helper GetSitemapEntriesForChildren(IPublishedContent parentPage, int maxSiteMapDepth, string[] documentTypeWhitelist, List<IPublishedContent> sitemap)
+{
+    var children = parentPage.Children.Where(f => documentTypeWhitelist.Contains(f.GetTemplateAlias()) && !f.Value<bool>("hideFromXmlSiteMap"));
+
+    foreach (var page in children)
+    {
+        sitemap.Add(page);
+        if (page.Level < maxSiteMapDepth && page.Children.Any(f => documentTypeWhitelist.Contains(f.GetTemplateAlias()) && !f.Value<bool>("hideFromXmlSiteMap")))
+        {
+            @GetSitemapEntriesForChildren(page, maxSiteMapDepth, documentTypeWhitelist, sitemap)
+        }
+    }
+}
+
+
+@helper RenderSiteMapEntries(IEnumerable<IPublishedContent> sitemap)
+{
+    foreach (var row in sitemap.ToArray().Split(3))
+    {
+        <div class="row">
+            @foreach (var page in row)
+            {
+                <div class="col-md-4">
+                    @RenderSiteMapUrlEntry(page)
+                </div>
+            }
+        </div>
+    }
+}
+
+
+@helper RenderSiteMapUrlEntry(IPublishedContent node)
+{
+    @RenderLink(node, "h2")
+}
+
+@helper RenderLink(IPublishedContent link, string cssClass = "", string title = "")
+{
+    // A standard link.
+    if (link != null)
+    {
+        var linkName = string.IsNullOrEmpty(title) ? link.Name : title;
+        <a href="@link.Url" class="@cssClass">
+            @linkName
+        </a>
+    }
+}
+
+
+
+

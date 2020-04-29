@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<EcIframeSection>
+@using ClientDependency.Core.Mvc;
+@{
+    EcIframeSection iframeSection = Model;
+
+    Html.RequiresCss("~/styles/css/IframeSection.css");
+    Html.RequiresJs("~/scripts/ec/IframeSection.js");
+
+
+}
+    <section class="page-section iframe-section  @Model.Container">
+
+            <iframe src="@iframeSection.Source" marginheight="0" frameborder="0" border="0" scrolling="auto" style="height:@(Model.Height)px;"></iframe>
+    </section>

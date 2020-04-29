@@ -1,0 +1,202 @@
+@import "colors.less";
+
+header {
+    z-index: 51; //Allow header search results to appear over footer which has 50.
+    // Bootstrap overrides
+    .navbar.navbar-default {
+        // Same background as the footer.
+        .blue-grey-gradient;
+        //position: relative;
+        // Image is 45 + 10px padding either side - default is 50
+        min-height: 65px;
+        margin-bottom: 0px;
+        border: none;
+        // Keep the navbar square.
+        border-radius: initial;
+        box-shadow: none;
+
+        .navbar-brand {
+            float: left;
+            height: 65px; // default is 50 including 30 px padding - make padding 20 and image is 45px - so increase by 15.
+            padding: 10px 10px;
+
+            img {
+                width: 44px;
+                height: 45px;
+                border-radius: 50%;
+            }
+        }
+        // Theme the hamburger - and same size as logo - 45px.
+        .navbar-toggle {
+            border-color: @earth-dark-blue;
+            height: 45px;
+
+            & .icon-bar {
+                height: 4px;
+                background-color: @earth-dark-blue;
+            }
+
+            &:focus, &:hover {
+                background-color: @link-bg-color;
+            }
+        }
+        // Main menu.
+        ul.nav.navbar-nav {
+            // Keep menu away from logo - override for mobile.
+            margin-left: 100px;
+            // Dropdown menus styled like main menu.
+            .dropdown-menu {
+                .blue-grey-gradient;
+
+                &:hover {
+                    background-color: @tab-hover-colour;
+                }
+            }
+
+            & > li a, &.navbar-nav .open .dropdown-menu li > a {
+                font-size: 24px;
+                line-height: 35px;
+                color: black;
+                white-space: nowrap;
+                text-align: left;
+                background-image: none;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    outline: 0;
+                    color: @text-color;
+                    text-decoration: none;
+                }
+
+                &:hover {
+                    background-color: @tab-hover-colour;
+                }
+            }
+
+            @media (min-width: 768px) {
+                .open .menu-cols {
+                    display: table-row;
+
+                    .menu-col {
+                        display: table-cell;
+                        min-width: 160px;
+                    }
+                }
+            }
+
+            .menu-cols > ul.menu-col {
+                list-style: none;
+                padding: 0;
+
+                & > li > a {
+                    display: block;
+                    padding: 3px 20px;
+                }
+            }
+            // When the dropdown is clicked - make sure it keeps the "hoverred look".
+            li.dropdown.open > a:first-child {
+                background-color: @link-bg-color;
+                background-image: none !important;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    outline: 0;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+// Use a large brand image when the search bar is present.
+header.search-bar {
+    .navbar.navbar-default {
+        .navbar-brand {
+            img {
+                width: 88px;
+                height: 88px;
+                border-radius: 50%;
+            }
+        }
+    }
+}
+// Header with no search bar feature.
+header + div.page-content.navbar-fixed-top-margin {
+    // Menu is min 65px
+    // Search bar is 67px;
+    margin-top: 65px;
+}
+
+header.search-bar + div.page-content.navbar-fixed-top-margin {
+    // Menu is min 65px
+    // Search bar is 67px;
+    margin-top: 132px;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .navbar.navbar-default {
+        ul.nav.navbar-nav {
+            //Menu items on separate lines so no need for margin - restore bootstrap original to align at left.
+            margin-left: 10px !important;
+        }
+    }
+
+    header.search-bar, header {
+        .navbar.navbar-default {
+            .navbar-brand {
+                img {
+                    width: 44px;
+                    height: 45px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    header.search-bar, header {
+        .navbar.navbar-default {
+            .navbar-brand {
+                img {
+                    width: 44px;
+                    height: 45px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    header .navbar.navbar-default {
+        ul.nav.navbar-nav {
+            //Menu items on separate lines so no need for margin - restore bootstrap original to align at left.
+            margin-left: -15px !important;
+            // Dropdowns appear like accordions in mobile.
+            li.dropdown > a:first-child {
+
+                &:after {
+                    /* symbol for "open" panels */
+                    content: "+";
+                    float: right;
+                    color: @text-color;
+                }
+            }
+
+            li.dropdown.open > a:first-child {
+
+                &:after {
+                    /* symbol for "close" panels */
+                    content: "-";
+                    float: right;
+                    color: @text-color;
+                }
+            }
+        }
+    }
+}

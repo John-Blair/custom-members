@@ -1,0 +1,21 @@
+﻿@model dynamic
+    @* Requires following properties:
+        Title
+        IsMainTitle - use H1 if true, otherwise use class h1.
+        
+    *@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="page-title">
+            @if (Model.IsMainTitle)
+            {
+                <h1>@Model.Title</h1>
+            }
+            else
+            {
+                <div class="h1">@Model.Title</div>
+            }
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@inherits UmbracoViewPage<EcLoginSection>
+@{
+    Html.RequiresCss("~/styles/css/loginSection.css");
+}
+
+<section class="page login-section @Model.Container">
+
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Action("LoginForm", "CustomerMembership")
+        </div>
+        <div class="col-md-6">
+            @Html.Action("RegisterForm", "CustomerMembership")
+        </div>
+    </div>
+</section>

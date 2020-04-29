@@ -1,0 +1,65 @@
+﻿@inherits UmbracoViewPage<EcTaxonomySection>
+@using ClientDependency.Core.Mvc
+@{
+
+    Html.RequiresCss("~/styles/css/booksSection.css");
+    Html.RequiresJs("~/scripts/ec/booksSection.js");
+
+    var page = Model.AncestorsOrSelf().Where(p => p.ContentType.Alias == "ecContentPage").FirstOrDefault() as EcContentPage;
+
+}
+<section class="page-section books-section container">
+    @if (page != null)
+    {
+
+        var allTax = new IEnumerable<IPublishedContent>[] {
+        page.CountryTaxonomy,
+        page.FundManagerTaxonomy,
+        page.InvestorTypeTaxonomy,
+        page.InvestmentStrategyTaxonomy,
+        page.CurrencyTaxonomy};
+
+        var names = new string[] { "Country","Fund Manager", "Investor Type", "Investment Strategy", "Currency" };
+        var i = 0;
+        foreach (IEnumerable<IPublishedContent> item in allTax)
+        {
+        <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>@names[i++]</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Extension</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>ToCsvNames</td>
+                                <td>@item.ToCsvNames()</td>
+                            </tr>
+                            <tr>
+                                <td>ToWrappedCsvNames</td>
+                                <td>@item.ToWrappedCsvNames()</td>
+                            </tr>
+                            <tr>
+                                <td>ToCsvIds</td>
+                                <td>@item.ToCsvIds()</td>
+                            </tr>
+                            <tr>
+                                <td>ToWrappedCsvIds</td>
+                                <td>@item.ToWrappedCsvIds()</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+
+    }
+
+</section>

@@ -1,0 +1,72 @@
+//@import "colors.less";
+
+.page-section.video-playlist-section {
+    // Make sure any background video appears under any other section with a default index of 10.
+    //z-index: 9;
+    
+}
+
+.video-playlist-section {
+    position: relative;
+
+    .video-row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .video-wrapper {
+        // Video cabinet when centring.
+        background-color: black;
+        //text-align: center;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio ( 1/ (16/9)) */
+        width: 100%; // Height will auto adjust to maintain aspect ratio.
+        position: relative;
+
+        iframe {
+            background-color: black;
+            // Position the video completely in the video wrapper to maintain the 16:9 aspect ratio.
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        video {
+            background-color: black;
+            // Position the video completely in the video wrapper to maintain the 16:9 aspect ratio.
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+
+
+
+
+
+
+
+
+    iframe-del {
+        background-color: black;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        // Prevent the video element above's max-width applying here!
+        max-width: initial;
+        z-index: -1;
+        margin-bottom: 0px;
+    }
+}
+

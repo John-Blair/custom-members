@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<EcErrorPage>
+@{
+
+    EcErrorPage contentPage = Model;
+    var pageSectionsContainer = contentPage.Descendant<EcPageSectionsContainer>();
+    if (pageSectionsContainer != null)
+    {
+        var pageSections = pageSectionsContainer.Children();
+        foreach (IPublishedContent pageSection in pageSections)
+        {
+            @Html.Partial("_PageSectionRenderer", pageSection, new ViewDataDictionary { })
+        }
+    }
+}

@@ -1,0 +1,71 @@
+@import "colors.less";
+
+.catalog-page {
+    //background-color:green;
+    position: relative;
+    // Use the containers default padding of 15px.
+    //margin-left: 10px;
+    //margin-right: 10px;
+
+
+       h2 a, h3 a , h4 a{
+                display: block;
+                text-decoration:none;
+                outline: none; /* fix for ie to remove outline in header */
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top:5px;
+                padding-bottom: 5px;
+
+                // Standard link hover colour.
+                &:hover {
+                    background-color: @tab-hover-colour !important;
+                }
+        }
+   
+
+    // Prevent any default top margin on h1 to h6 classes as the header has a bottom margin - and elements not being adjacent the margins will not overlap.
+    .description-row{
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+
+        p:last-child{
+            //margin-bottom: 0px;
+        }
+    }
+
+    .hr{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height:1px;
+        border-top:  1px solid @tab-border-colour;
+    }
+
+   
+    .product-box{
+        .well{
+            background-color:@tab-background-colour;
+            background-image:none;
+
+            .btn-default {
+                background-image: none !important;
+                text-shadow:none !important;
+            }
+            input[type=submit]{
+                .btn-primary-forced;
+            }
+
+            .original-price {
+                margin-left: 10px;
+                font-weight: normal;
+                text-decoration: line-through;
+            }
+        }
+
+        img {width:100%}
+     
+    }
+}
+
+
+

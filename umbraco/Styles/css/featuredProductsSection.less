@@ -1,0 +1,54 @@
+@import "colors.less";
+
+.featured-products-section {
+    //background-color:green;
+    position: relative;
+
+    h1,  .h1 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+   
+    
+    h3 a , h4 a{
+            display: block;
+            text-decoration:none;
+            outline: none; /* fix for ie to remove outline in header */
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top:5px;
+            padding-bottom: 5px;
+
+            // Standard link hover colour.
+            &:hover {
+                background-color: @tab-hover-colour !important;
+            }
+    }
+
+    .product-box{
+        .well{
+            background-color:@tab-background-colour;
+            background-image:none;
+
+            .btn-default {
+                background-image: none !important;
+                text-shadow:none !important;
+            }
+            input[type=submit]{
+                .btn-primary-forced;
+            }
+
+            .original-price {
+                margin-left: 10px;
+                font-weight: normal;
+                text-decoration: line-through;
+            }
+        }
+
+        img {width:100%}
+     
+    }
+}
+
+
+

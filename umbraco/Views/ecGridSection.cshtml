@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<EcGridSection>
+@{
+    EcGridSection gridSection = Model;
+
+    Html.RequiresCss("~/styles/css/gridSection.css");
+     var container = Model.Container.EmptyIfNull().NullIfEmpty() ?? "container-fluid";
+
+
+}
+<section class="page-section grid-section @container">
+    @Html.GetGridHtml(Model, "grid", "bootstrap3-fluid")
+</section>

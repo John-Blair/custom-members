@@ -1,0 +1,142 @@
+.page-section + .search-section {
+  // Keep searchbar tight to previous section
+}
+@import "colors.less";
+
+.search-section {
+    //background-color:green;
+    position: relative;
+    // Use the containers default padding of 15px.
+    color: @text-color;
+    // Center the search container.
+    display: flex;
+    justify-content: center; // Horizontal alignment.
+    align-items: center; // Vertical alignment
+
+
+    .search-container {
+        position: relative;
+        display: inline-block;
+        // The container is padded left and right and menu have padding-bottom 15px;
+        padding-bottom: 25px;
+        width: 100%;
+        // Centre
+        input.search {
+            font-size: 24px;
+            line-height: 42px;
+            border: solid 1px #474747;
+            height: 42px;
+            border-radius: 20px;
+            padding-left: 20px;
+            padding-right: 40px;
+            z-index: 1;
+            background-color: @tab-background-colour;
+            width: 100%;
+            // Remove blue outline.
+            &:focus, &:active {
+                outline: 0;
+                //box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+                .box-shadow-blue-grey;
+            }
+        }
+
+        button.search {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            z-index: 1;
+            height: 30px;
+            width: 30px;
+            border: none;
+            background-color: transparent;
+            // Remove blue outline.
+            &:focus, &:active {
+                outline: 0;
+            }
+        }
+    }
+
+    .center {
+        text-align: center;
+    }
+    // Allow the search container to be the position relative to control positioning.
+    .twitter-typeahead {
+        position: static !important;
+        display: inline !important;
+    }
+    // TBD
+    .tt-query {
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    }
+    // Hint being a faded grey looks fine - not a theme color but run with it.
+    .tt-hint {
+        color: #999;
+    }
+
+    .tt-menu {
+        // Align with the search bar - at all breakpoints.
+        width: 100%;
+        // Open typeahead results at the bottom of the header.
+        //margin-top: 4px;
+        padding: 4px 0;
+        background-color: @tab-background-colour;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+        box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    }
+    // Size results like the searchbar
+    //
+    .tt-suggestion, .suggestion {
+        padding: 3px 20px;
+        //line-height: 24px;
+        font-size: 24px;
+        line-height: 42px;
+        border-bottom: 1px solid @page-content-bg-color;
+
+        &:last-child {
+            border-bottom: none;
+        }
+        // Style the template
+        a {
+            text-decoration: none;
+            // Remove blue outline.
+            &:focus, &:active {
+                text-decoration: none;
+                outline: 0;
+            }
+
+            img {
+                width: 60px;
+                height: 60px;
+                vertical-align: middle;
+            }
+
+            div.name-description {
+                display: inline-block;
+                margin-left: 20px;
+
+                div.name {
+                    line-height: 30px;
+                }
+
+                div.description {
+                    font-size: 12px;
+                    line-height: 30px;
+                }
+            }
+        }
+    }
+
+    .tt-suggestion.tt-cursor, .tt-suggestion:hover {
+        color: @text-color;
+        background-color: @tab-hover-colour;
+    }
+}
+

@@ -1,0 +1,22 @@
+@import "colors.less";
+
+.sitemap-section {
+    margin-top: 20px;
+
+    a.h2{
+        // Prevent top and bottom margins merging in mobile.
+        margin-top:0px;
+        margin-bottom:20px;
+
+        display:block;
+        color: @theme-link-color;
+        text-decoration:none;
+
+        &:hover {
+          background-color: @tab-hover-colour;
+        }
+    } 
+}
+
+
+

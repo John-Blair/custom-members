@@ -1,0 +1,209 @@
+﻿.blue-gradient {
+  background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
+  /* IE6-9 */
+}
+.blue-grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1);
+  /* IE6-9 */
+}
+.gold-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eab92d+0,c79810+100;Yellow+3D+%232 */
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810', GradientType=0);
+  /* IE6-9 */
+}
+.box-shadow-blue-grey {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.btn-primary-forced {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -o-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88)) !important;
+  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  background-repeat: repeat-x !important;
+  border-color: #245580 !important;
+  color: white !important;
+  text-shadow: none !important;
+  background-color: none !important;
+}
+.btn-primary-forced:hover {
+  background-color: #265a88 !important;
+  background-position: 0 -15px !important;
+}
+.btn-primary-forced:focus {
+  background-position: unset !important;
+}
+.centred-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.page-section + .text-section {
+  z-index: 9;
+}
+.text-section {
+  position: relative;
+}
+.text-section video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+.text-section .center {
+  text-align: center;
+}
+.text-section .text-row {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.text-section .text-row p:last-child {
+  margin-bottom: 0px;
+}
+.text-section :target:before {
+  content: "";
+  display: block;
+  height: 132px;
+  /* fixed header height*/
+  margin: -132px 0 0;
+  /* negative fixed header height */
+}
+.text-section ul.children {
+  display: block;
+  list-style-type: none;
+}
+.text-section ul.children a:hover,
+.text-section ul.children a:focus {
+  color: black;
+  text-decoration: none;
+}
+.text-section ul.children a:hover {
+  background-color: #c2d7e6;
+}
+.p-rel {
+  position: relative;
+}
+.circle-effect-container {
+  position: relative;
+  overflow: hidden;
+}
+.circle-effect-caption {
+  z-index: 1;
+}
+.circle-effect {
+  border-radius: 50%;
+  height: 0;
+  opacity: 0;
+  width: 0;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.circle-effect-container:hover .circle-effect {
+  /*
+        opacity: 1;
+    width: 1000px;
+    height: 1000px;
+   */
+  animation-direction: alternate;
+  animation-duration: 1s;
+  animation-iteration-count: 2;
+  animation-name: circle-effect;
+}
+.bg-blue {
+  background-color: blue;
+}
+.bg-gold {
+  background-color: goldenrod;
+}
+.bg-red {
+  background-color: red;
+}
+.bg-green {
+  background-color: green;
+}
+.bg-orange {
+  background-color: orange;
+}
+.bg-yellow {
+  background-color: yellow;
+}
+.bg-violet {
+  background-color: violet;
+}
+.bg-pink {
+  background-color: pink;
+}
+.bg-white {
+  background-color: white;
+}
+.bg-aliceblue {
+  background-color: aliceblue;
+}
+.bg-black {
+  background-color: black;
+}
+.w-100-h-200px {
+  width: 100%;
+  height: 200px;
+}
+.w-200px-h-200px {
+  width: 200px;
+  height: 200px;
+}
+.w-100-h-50px {
+  width: 100%;
+  height: 50px;
+}
+.w-50-h-50px {
+  width: 50%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mt--50px {
+  margin-top: -50px;
+}
+@keyframes circle-effect {
+  0% {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    width: 1000px;
+    height: 1000px;
+  }
+}

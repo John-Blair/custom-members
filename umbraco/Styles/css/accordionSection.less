@@ -1,0 +1,62 @@
+@import "colors.less";
+
+.page-section + .accordion-section {
+    margin-top: 20px; // Give some spacing from any previous section
+    position: relative;
+}
+
+.accordion-section.panel-group {
+
+    .panel + .panel {
+         margin-top: 0; // Remove the gap between panels
+    }
+
+    .panel-body{
+        background-color: @tab-background-colour;
+    }
+
+    /* Accordion overrides */
+    /* Make the whole accordion title clickable - hide the fact it is a link.*/
+    .panel-heading{
+        // Put all the padding on the link so the selection colour covers all the heading.
+        padding: 0px;
+
+        .panel-title  {
+
+            // Make the complete panel heading clickable.
+            // Double the line height which contains the a link - full area of h4 is clickable.
+            // Remove the top and bottom padding in the panel-heading which is not clickable.
+            line-height:2;
+            .blue-grey-gradient;
+
+            a {
+                display: block;
+                text-decoration:none;
+                outline: none; /* fix for ie to remove outline in header */
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top:5px;
+                padding-bottom: 5px;
+
+                // Standard link hover colour.
+                &:hover {
+                    background-color: @tab-hover-colour !important;
+                }
+
+                &:after{
+                    /* symbol for "open" panels */
+                    content: "-";   
+                    float: right;        
+                    color: @text-color;                         
+                }
+
+                &.collapsed:after{
+                    /* symbol for "collapsed" panels */
+                    content: "+";  
+                }
+            }
+        }
+    }
+}
+
+

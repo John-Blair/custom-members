@@ -1,0 +1,76 @@
+﻿@inherits UmbracoViewPage<EcTextSection>
+@using JB.Helpers
+@{
+    EcTextSection textSection = Model;
+
+    Html.RequiresCss("~/styles/css/textSection.css");
+
+    var textClass= "";
+
+    var title = textSection.Title.EmptyIfNull();
+
+    var setColor = false;
+    if (textSection.Color != null)
+    {
+         setColor = textSection.Color.ToString().EmptyIfNull().Length > 0;
+
+    }
+
+    var colorStyle = string.Empty;
+
+    if (setColor)
+    {
+        colorStyle= "color:" + textSection.Color;
+    }
+
+}
+    <section class="page-section text-section container @textSection.GetSectionEffectCssClass()  @(textSection.HoverEffect ? "circle-effect-container": null)"
+             style="@(setColor ? colorStyle: null)">
+        @if (!textSection.HideTitle && title.Length > 0)
+        {
+            // No need for row - use the default padding for the container.
+            <div class="row  @(textSection.HoverEffect ? "circle-effect-caption": null)">
+                <div class="col-xs-12">
+                    <div class="page-title @(textSection.CenterTitle ? "center": null)">
+                        @Html.Raw(TextSection.Title(textSection.IsMainTitle, (int)textSection.TitleSize, title))
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!textSection.HideText && Model.Text.ToString().EmptyIfNull().Length > 0)
+        {
+            textClass = TextSection.TextClass((int)textSection.TextSize);
+            <div class="row  @(textSection.HoverEffect ? "circle-effect-caption": null)">
+                <div class="col-xs-12">
+                    <div class="text-row @textClass  @(textSection.CenterText ? "center": null)">
+                        @Html.Raw(Model.Text)
+                    </div>
+                </div>
+            </div>
+
+        }
+
+        @if (textSection.ListChildren)
+        {
+            <ul class="children">
+                @foreach (IPublishedContent child in textSection.Parent.Parent.Children<EcContentPage>().Where(x => x.IsVisible()))
+                {
+                    <li><h2><a href="@child.Url" class="child-link">@child.Name</a></h2></li>
+                }
+                @foreach (IPublishedContent child in textSection.Parent.Parent.Children<EcErrorPage>().Where(x => x.IsVisible()))
+                {
+                    <li><h2><a href="@child.Url" class="child-link">@child.Name</a></h2></li>
+                }
+            </ul>
+        }
+
+        @if (textSection.VideoUrl.Length > 0)
+        {
+            <video autoplay muted loop>
+                <source src="@textSection.VideoUrl" type="video/mp4">
+            </video>
+        }
+        <div class="circle-effect bg-aliceblue"></div>
+    </section>
+

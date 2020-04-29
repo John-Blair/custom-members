@@ -1,0 +1,27 @@
+.page-section + .grid-section {
+  margin-top:20px; // Give some spacing from any previous section - not needed as page title has top margin.
+}
+
+.grid-section {
+    //background-color:green;
+    position: relative;
+    // Use the default padding on the container.
+    //margin-left: 10px;
+    //margin-right: 10px;
+    // Ad was appearing over the 321 countdown popup - both grid and ad had 10 z-index - made grid higher and that fixed it.
+    z-index: 15 !important;
+    // Avoid double padding with embedding any other section in a grid cell.
+    // Do this by applying a -15px margin left and right to extend the contained section into the padding area of the outer container so the only padding that will
+    // apply will be the padding of the container itself.
+    // Both container and container-fluid use 15px padding in bootstrap 3.
+    // Only target the first level containers within the grid i.e. the page sections
+    // All sections embedded in the grid should be fluid.
+    .row > .column .page-section {
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .row > .column:not(:last-child) .page-section {
+    }
+}
+

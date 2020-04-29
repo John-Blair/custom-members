@@ -1,0 +1,53 @@
+@import "colors.less";
+
+.product-page {
+    //background-color:green;
+    position: relative;
+    
+
+   .center{
+       text-align:center;
+   }
+
+    // Prevent any default top margin on h1 to h6 classes as the header has a bottom margin - and elements not being adjacent the margins will not overlap.
+    .description-row{
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+
+        p:last-child{
+            //margin-bottom: 0px;
+        }
+    }
+
+    .hr{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height:1px;
+        border-top:  1px solid @tab-border-colour;
+    }
+
+  
+    .price-basket{
+        .well{
+            background-color:@tab-background-colour;
+            background-image:none;
+
+            .btn-default {
+                background-image: none !important;
+                text-shadow:none !important;
+            }
+            input[type=submit]{
+                .btn-primary-forced;
+            }
+
+            .original-price {
+                margin-left: 10px;
+                font-weight: normal;
+                text-decoration: line-through;
+            }
+        }
+    }
+}
+
+
+

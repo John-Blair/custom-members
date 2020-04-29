@@ -1,0 +1,94 @@
+@import "colors.less";
+
+.page-section + .user-comments-section {
+    margin-top: 20px; // Give some spacing from any previous section.
+}
+
+.user-comments-section {
+
+    .panel-default > .panel-heading {
+        .blue-grey-gradient !important;
+        background-image: none;
+    }
+
+    .user-comments-content {
+        .user-comment-create {
+            .user-comment-name-post {
+                margin-bottom: 10px;
+            }
+
+            .user-comment-name {
+                font-size: 13px;
+                line-height: 13px;
+                color: rgb(51, 122, 183) !important;
+                float: left;
+                // Editable
+                input {
+                    font-size: 18px;
+                    height: 34px;
+                    width: 100%;
+                }
+                //Read-only
+                div {
+                    font-size: 18px;
+                    height: 34px;
+                    line-height: 34px;
+                }
+            }
+
+            .user-comment-post {
+
+
+                button {
+                    float: right;
+                }
+            }
+
+            .user-comment-text {
+                textarea {
+                    width: 100%;
+                    font-size: 15px;
+                    line-height: 21px;
+                }
+            }
+        }
+
+        .user-comment-rows {
+
+            div.user-comment-row:nth-child(even) {
+                //background: red;
+            }
+
+            div.user-comment-row:nth-child(odd) {
+                .blue-grey-gradient !important;
+            }
+
+            .user-comment-row {
+                //margin-bottom: 12px;
+                padding: 10px;
+
+                .user-comment-name {
+                    font-size: 13px;
+                    line-height: 13px;
+                    color: rgb(51, 122, 183) !important;
+                    float: left;
+                }
+
+                .user-comment-created {
+                    font-size: 13px;
+                    line-height: 13px;
+                    float: right;
+                }
+
+                .user-comment-text {
+                    font-size: 15px;
+                    line-height: 21px;
+                }
+            }
+        }
+    }
+}
+
+
+
+

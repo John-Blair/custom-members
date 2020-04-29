@@ -1,0 +1,46 @@
+﻿@inherits UmbracoViewPage<EcDiscussSection>
+@using ClientDependency.Core.Mvc;
+@using JB.Backoffice.GlobalTrade;
+@{
+
+    Html.RequiresCss("~/styles/css/discussSection.css");
+    var shortname = ( System.Configuration.ConfigurationManager.AppSettings["Disqus.Website.Shortname"] ??  Model.DisqusWebsiteShortname).EmptyIfNull().Trim();
+    var identifier = Model.Key;
+    // Identify the containing page of the discussion section - including schema and domain.
+    var url =HttpContext.Current.Request.Url.AbsoluteUri;
+
+}
+    <section class="page-section discuss-section container">
+        @if (!Model.DisableDiscussion && shortname.Length > 0)
+        {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Discussion</h4>
+            </div>
+            <div class="panel-body">
+                <div id="disqus_thread">
+                    <script type="text/javascript">
+
+	                /** ENTER DISQUS SHORTNAME HERE **/
+	                var disqus_shortname = '@shortname';
+	                /** DO NOT MODIFY BELOW THIS LINE **/
+	                var disqus_identifier = '@identifier';
+	                var disqus_url = '@url';
+	                (function () {
+	                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	                })();
+                    </script>
+                    <noscript>
+                        Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+                    </noscript>
+                    <a href="http://disqus.com" class="dsq-brlink">
+                        comments powered by <span class="logo-disqus">Disqus</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    }
+    </section>

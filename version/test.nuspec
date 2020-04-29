@@ -1,0 +1,30 @@
+﻿<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>JB.AutoContent</id>
+        <version>1.5.8</version>
+        <title>Auto Content</title>
+        <authors>John Blair</authors>
+        <owners>John Blair</owners>
+        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://johnblair.azurewebsites.net</projectUrl>
+        <iconUrl>https://johnblair.azurewebsites.net/media/q5cnjxrc/cover.jpg</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Specify which content should be auto-created in the config file as a set of rules.</description>
+        <summary>Specify which content should be auto-created in the config file as a set of rules.</summary>
+        <releaseNotes>Initial version</releaseNotes>
+        <copyright>Copyright 2019</copyright>
+        <language>en-GB</language>
+        <tags>Auto Content Creation Umbraco</tags>
+        <repository type="git" url="https://github.com/John-Blair/johnblair" />
+        <dependencies>
+            <group targetFramework="net472">
+                <dependency id="UmbracoCms.Core" version="[8.1.5,8.999999)" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="config\**\*.*" target="content\config"/>
+        <file src="bin\Release\Ec.AutoContent.dll" target="lib\net472" />
+    </files>
+</package>

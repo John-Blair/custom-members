@@ -1,0 +1,21 @@
+﻿@inherits UmbracoViewPage
+@{
+    string title = string.Empty;
+
+    if (!string.IsNullOrEmpty(ViewData["title"] as string))
+    {
+        title = " - " + ViewData["title"] as string;
+    }
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="title-row">
+            <h1>@(Model.HasProperty("headline") && Model.HasValue("headline") ? Model.Value("headline") : MvcHtmlString.Create(Model.Name))@title</h1>
+        </div>
+    </div>
+</div>
+@if (Model.HasProperty("brief") && Model.HasValue("brief"))
+{
+    @Model.Value("brief")
+}

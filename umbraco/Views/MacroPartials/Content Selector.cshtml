@@ -1,0 +1,10 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+    var contentId = Model.MacroParameters["contentId"];
+    var content = Umbraco.Content(contentId);
+}
+
+@Html.Partial(content.GetTemplateAlias(), content)
+
+
+

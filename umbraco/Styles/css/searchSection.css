@@ -1,0 +1,178 @@
+﻿.blue-gradient {
+  background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
+  /* IE6-9 */
+}
+.blue-grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1);
+  /* IE6-9 */
+}
+.gold-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eab92d+0,c79810+100;Yellow+3D+%232 */
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810', GradientType=0);
+  /* IE6-9 */
+}
+.box-shadow-blue-grey {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.btn-primary-forced {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -o-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88)) !important;
+  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  background-repeat: repeat-x !important;
+  border-color: #245580 !important;
+  color: white !important;
+  text-shadow: none !important;
+  background-color: none !important;
+}
+.btn-primary-forced:hover {
+  background-color: #265a88 !important;
+  background-position: 0 -15px !important;
+}
+.btn-primary-forced:focus {
+  background-position: unset !important;
+}
+.search-section {
+  position: relative;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-section .search-container {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 25px;
+  width: 100%;
+}
+.search-section .search-container input.search {
+  font-size: 24px;
+  line-height: 42px;
+  border: solid 1px #474747;
+  height: 42px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 40px;
+  z-index: 1;
+  background-color: #f9fbfc;
+  width: 100%;
+}
+.search-section .search-container input.search:focus,
+.search-section .search-container input.search:active {
+  outline: 0;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.search-section .search-container button.search {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  z-index: 1;
+  height: 30px;
+  width: 30px;
+  border: none;
+  background-color: transparent;
+}
+.search-section .search-container button.search:focus,
+.search-section .search-container button.search:active {
+  outline: 0;
+}
+.search-section .center {
+  text-align: center;
+}
+.search-section .twitter-typeahead {
+  position: static !important;
+  display: inline !important;
+}
+.search-section .tt-query {
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+.search-section .tt-hint {
+  color: #999;
+}
+.search-section .tt-menu {
+  width: 100%;
+  padding: 4px 0;
+  background-color: #f9fbfc;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.search-section .tt-suggestion,
+.search-section .suggestion {
+  padding: 3px 20px;
+  font-size: 24px;
+  line-height: 42px;
+  border-bottom: 1px solid #EAEDED;
+}
+.search-section .tt-suggestion:last-child,
+.search-section .suggestion:last-child {
+  border-bottom: none;
+}
+.search-section .tt-suggestion a,
+.search-section .suggestion a {
+  text-decoration: none;
+}
+.search-section .tt-suggestion a:focus,
+.search-section .suggestion a:focus,
+.search-section .tt-suggestion a:active,
+.search-section .suggestion a:active {
+  text-decoration: none;
+  outline: 0;
+}
+.search-section .tt-suggestion a img,
+.search-section .suggestion a img {
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+.search-section .tt-suggestion a div.name-description,
+.search-section .suggestion a div.name-description {
+  display: inline-block;
+  margin-left: 20px;
+}
+.search-section .tt-suggestion a div.name-description div.name,
+.search-section .suggestion a div.name-description div.name {
+  line-height: 30px;
+}
+.search-section .tt-suggestion a div.name-description div.description,
+.search-section .suggestion a div.name-description div.description {
+  font-size: 12px;
+  line-height: 30px;
+}
+.search-section .tt-suggestion.tt-cursor,
+.search-section .tt-suggestion:hover {
+  color: black;
+  background-color: #c2d7e6;
+}

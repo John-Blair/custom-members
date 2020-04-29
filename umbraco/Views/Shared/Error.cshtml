@@ -1,0 +1,27 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    //Layout = "~/Views/Shared/master.cshtml";
+    ViewBag.Title = "Error";
+    var errorMessage = Model.Exception.Message ?? "No error message.";
+    errorMessage += "<br/>Stack Trace: " + Model.Exception.StackTrace;
+
+    //Server.ClearError();
+    Response.TrySkipIisCustomErrors = true;
+    //Response.StatusCode = 200;
+
+    GMailService.SendMail(EnvironmentSecret.Instance.EmailAdmin,"Application Error", errorMessage);
+}
+
+<h1 class="text-danger">Error</h1>
+@{
+    if (String.IsNullOrEmpty(Model.Exception.Message))
+    {
+        <h2 class="text-danger">An error occurred while processing your request.</h2>
+    }
+    else
+    {
+        <h2 class="text-danger">@Model.Exception.Message</h2>
+    }
+    <p>An email has been sent to the site administrator.</p>
+}

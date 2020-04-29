@@ -1,0 +1,113 @@
+﻿@inherits UmbracoViewPage<EcContactSection>
+@using Umbraco.Web
+@{
+    Html.RequiresCss("~/styles/css/contactSection.css");
+    Html.RequiresJs("~/Scripts/ec/contactSection.js");
+
+}
+<section class="page-section contact-section container @Model.GetSectionEffectCssClass()">
+    @if (!Model.HideTitle)
+    {
+        <div class="row">
+                <div class="page-title @(Model.CenterTitle ? "center": null)">
+                    @Html.Raw(TextSection.Title(Model.IsMainTitle, (int)Model.TitleSize, Model.Title))
+                </div>
+        </div>
+    }
+
+    @if (!Model.HideText)
+    {
+        var textClass = TextSection.TextClass((int)Model.TextSize);
+        <div class="row">
+                <div class="text-row @textClass  @(Model.CenterText ? "center": null)">
+                    @Html.Raw(Model.Text)
+                </div>
+        </div>
+
+    }
+
+    @{ 
+        // Important: The name of this variable must match the ContactController SendMail parameter
+        // in order for the posted data to be picked up.
+        // This is necessary as the model for this section is not being posted - via ajax - only the 
+        // message to be emailed to customer support.
+        var contact = new ContactViewModel();
+        var disabled = false;
+
+        var currentCustomer = "TODO"; // this.CurrentCustomer;
+                                      //if (!currentCustomer.IsAnonymous)
+                                      //{
+                                      //    var customer = (Merchello.Core.Models.ICustomer)currentCustomer;
+                                      //    contact.Name = $"{customer.FirstName} {customer.LastName}";
+                                      //    contact.EmailAddress = $"{customer.Email}";
+                                      //    disabled = true;
+                                      //}
+    }
+
+    @using (Ajax.BeginForm("SendMail", "Contact", new AjaxOptions
+    {
+        HttpMethod = "POST",
+        OnComplete = "ecContactSection.resetForm" 
+    }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => contact.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (disabled)
+                    {
+                        @Html.EditorFor(model => contact.Name, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                    }
+                    else
+                    {
+                         @Html.EditorFor(model => contact.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    }
+                    @Html.ValidationMessageFor(model => contact.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => contact.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (disabled)
+                    {
+                        @Html.EditorFor(model => contact.EmailAddress, new { htmlAttributes = new { @class = "form-control", @readonly = "" } })
+                    }
+                    else
+                    {
+                        @Html.EditorFor(model => contact.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    }
+                    @Html.ValidationMessageFor(model => contact.EmailAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => contact.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => contact.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => contact.Subject, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => contact.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => contact.Message, new { htmlAttributes = new { @class = "form-control  text-area" } })
+                    @Html.ValidationMessageFor(model => contact.Message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Send Message" class="btn btn-primary" />
+                    <input type="reset" value="Clear Message" class="pull-right btn btn-primary"/>
+                </div>
+            </div>
+        </div>
+    }
+   
+</section>

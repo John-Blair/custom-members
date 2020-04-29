@@ -1,0 +1,28 @@
+﻿@inherits UmbracoViewPage<EcUserSurveyReportSection>
+@{
+
+	Html.RequiresCss("~/styles/css/userSurveySection.css");
+	Html.RequiresCss("~/styles/css/userfeedback.css");
+
+	Html.RequiresCss("~/styles/css/customRadio.css");
+	Html.RequiresCss("~/styles/css/customCheckbox.css");
+	Html.RequiresJs("~/scripts/ec/jquery.customRadio.js");
+	Html.RequiresJs("~/scripts/ec/jquery.customCheckbox.js");
+	Html.RequiresJs("~/scripts/ec/userSurveySection.js");
+
+	var surveyId = Model.SurveyId;
+
+}
+	<section class="page-section user-survey-section @Model.Container">
+		@if ( Model.SurveyId == 0)
+		{
+			<p>The Survey Report is no longer available.</p>
+		}
+		else
+		{
+			<jb-user-survey-report survey-id="@surveyId"></jb-user-survey-report>
+
+		}
+
+
+	</section>

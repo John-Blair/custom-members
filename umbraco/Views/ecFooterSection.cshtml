@@ -1,0 +1,70 @@
+﻿@inherits UmbracoViewPage<EcFooterSection>
+@{
+    EcFooterSection footerSection = Model;
+
+    IEnumerable<EcAbstractMenuColumn> footerMenu = footerSection.FooterMenu;
+    int columnCount = footerMenu.Where(x => x.IsVisible()).Count();
+    if (columnCount == 0) { columnCount = 1; }
+
+    int columnClass = 12 / columnCount; // Requires 1,2,3,4 columns present
+
+    IEnumerable<EcAbstractMenuColumn> copyrightMenu = footerSection.CopyrightMenu;
+    IPublishedContent logo = footerSection.Logo;
+
+    Html.RequiresCss("~/styles/css/footerSection.css");
+}
+
+<div class="page-section footer-section container-fluid">
+    @* Footer Menu*@
+    <div class="row footer-menu-rows">
+        @foreach (EcAbstractMenuColumn menuColumn in footerMenu.Where(x => x.IsVisible()))
+        {
+            <div class="footer-menu-row">
+                <h2>@menuColumn.Title</h2>
+                @RenderNavigation( menuColumn.Menu, "footer-menu-col")
+            </div>
+        }
+    </div>
+    @* Logo *@
+    <div class="row image-row">
+        @RenderImage(footerSection.Logo)
+    </div>
+    @* Copyright Menu*@
+    <div class="row">
+        @foreach (EcAbstractMenuColumn menuColumn in footerSection.CopyrightMenu.Where(x => x.IsVisible()))
+        {
+            <div class="col-md-12 copyright-row">
+                <span class="copyright">&copy; @DateTime.Now.Year @menuColumn.Title</span>
+                @RenderNavigation(menuColumn.Menu, "copyright-menu-col")
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@helper RenderNavigation(IEnumerable<Umbraco.Web.Models.Link> items, string listClass = "")
+{
+    if (items.Any())
+    {
+        <ul class="@listClass">
+            @foreach (var item in items)
+            {
+                <li>
+                    <a href="@item.Url" target="@item.Target">
+                        @item.Name
+                    </a>
+
+                </li>
+            }
+        </ul>
+    }
+}
+
+@helper RenderImage(IPublishedContent image, string cssClass = "")
+{
+    if (image != null)
+    {
+        <img src="@image.Url" class="@cssClass" />
+    }
+}

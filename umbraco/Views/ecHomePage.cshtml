@@ -1,0 +1,15 @@
+﻿@inherits UmbracoViewPage<EcHomePage>
+@{
+
+    EcHomePage homePage = Model;
+
+    var pageSectionsContiner = homePage.Descendant<EcPageSectionsContainer>();
+    if (pageSectionsContiner != null)
+    {
+        var pageSections = pageSectionsContiner.Children();
+        foreach (IPublishedContent pageSection in pageSections)
+        {
+            @Html.Partial("_PageSectionRenderer", pageSection, new ViewDataDictionary { })
+        }
+    }
+}

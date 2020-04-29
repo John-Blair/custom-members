@@ -1,0 +1,23 @@
+@import "colors.less";
+
+.receipt-page {
+    position: relative;
+
+    h3{
+        border-bottom: 1px solid @tab-border-colour;
+        margin-bottom: 20px;
+    }
+
+    .panel-default >  .panel-heading{
+        .blue-grey-gradient !important;
+        background-image: none;
+    }
+    
+    .panel-body thead {
+        & th:nth-of-type(2), & th:nth-of-type(3), & th:nth-of-type(4){
+            text-align:right;
+        }
+
+    }
+}
+

@@ -1,0 +1,137 @@
+﻿.blue-gradient {
+  background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
+  /* IE6-9 */
+}
+.blue-grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1);
+  /* IE6-9 */
+}
+.gold-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eab92d+0,c79810+100;Yellow+3D+%232 */
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810', GradientType=0);
+  /* IE6-9 */
+}
+.box-shadow-blue-grey {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.btn-primary-forced {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -o-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88)) !important;
+  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  background-repeat: repeat-x !important;
+  border-color: #245580 !important;
+  color: white !important;
+  text-shadow: none !important;
+  background-color: none !important;
+}
+.btn-primary-forced:hover {
+  background-color: #265a88 !important;
+  background-position: 0 -15px !important;
+}
+.btn-primary-forced:focus {
+  background-position: unset !important;
+}
+/*
+    The custom radio has the following HTML after the plugin has operated on the label and
+    input elements.
+
+    <label class="is-custom-radio [is-custom-radio-vertical]" >One
+       <input type="radio" class="is-custom-radio" >
+       <span class="is-custom-radio"></span> 
+    </label>
+
+
+
+*/
+.is-custom-radio-vertical {
+  display: block;
+  /* 1 radio per line */
+}
+/* Customize the label (the container) */
+label.is-custom-radio {
+  position: relative;
+  /* allow custom radio to be positioned within the label */
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* No text selection */
+}
+/* Hide the browser's default radio */
+label.is-custom-radio input.is-custom-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom radio - from a span element adjacent to the input radio. */
+label.is-custom-radio span.is-custom-radio {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  /* Allow for hover box shadow to show even with no margin or padding for the element.*/
+  height: 25px;
+  width: 25px;
+  /* Make it circular*/
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0px 0px 0 4px #85b2d3;
+}
+/* On mouse-over, add a background color */
+label.is-custom-radio:hover input.is-custom-radio ~ span.is-custom-radio {
+  background-color: #eee;
+}
+/* When the radio is checked, add a blue background */
+label.is-custom-radio input.is-custom-radio:checked ~ span.is-custom-radio {
+  background-color: #337ab7;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+span.is-custom-radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+label.is-custom-radio input.is-custom-radio:checked ~ span.is-custom-radio:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+label.is-custom-radio span.is-custom-radio:after {
+  top: 9px;
+  left: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: white;
+}

@@ -1,0 +1,168 @@
+﻿@inherits UmbracoViewPage
+ 
+@{
+    Layout = null;
+
+
+    EcHomePage homePage = (EcHomePage)Umbraco.ContentAtRoot().FirstOrDefault(x => x.ContentType.Alias.Equals("ecHomePage"));
+
+    IPublishedContent homePageExtensions = homePage as IPublishedContent;
+
+    IPublishedContent currPage = Model;
+
+
+    EcGlobalSettings configPage = homePage.Descendant<EcGlobalSettings>();
+
+
+    // Allow page footer to override global footer.
+    EcFooterSection footerSection = currPage.Children<EcPageSettings>().FirstOrDefault()?.Descendant<EcFooterSection>();
+
+    // Allow page header or parent page header to override global header.
+    EcHeaderSection headerSection = currPage.Children<EcPageSettings>().FirstOrDefault()?.Descendant<EcHeaderSection>();
+
+    if (headerSection == null)
+    {
+        headerSection =  currPage.Parent?.Children<EcPageSettings>().FirstOrDefault()?.Descendant<EcHeaderSection>();
+    }
+    if (headerSection == null)
+    {
+        headerSection =  configPage.Descendant<EcHeaderSection>();
+    }
+
+    if (footerSection == null)
+    {
+        footerSection = currPage.Parent?.Children<EcPageSettings>().FirstOrDefault()?.Descendant<EcFooterSection>();
+    }
+    if (footerSection == null)
+    {
+        footerSection = configPage.Descendant<EcFooterSection>();
+    }
+
+
+    Html.RequiresJs("/scripts/bootstrap.min.js");
+    Html.RequiresCss("~/Content/bootstrap.css", 0);
+    Html.RequiresCss("~/Content/bootstrap-theme.css", 1);
+    Html.RequiresCss("~/Content/fontawesome-all.min.css", 2);
+
+    Html.RequiresCss("~/Styles/css/theme-overrides.css");
+    Html.RequiresCss("~/Styles/css/pagesection.css");
+    Html.RequiresCss("~/Styles/css/marketingStyles.css");
+
+    // Angular and the jb app.
+    Html.RequiresJs("/scripts/angular.js");
+    Html.RequiresJs("/scripts/moment.js");
+    Html.RequiresJs("/scripts/ngapp/jbapp.modules.js");
+
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbutilities.models.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbutilities.filters.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbutilities.userdirectives.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbutilities.userresources.js");
+
+    // SPA -Dashboard.
+    Html.RequiresJs("/App_Plugins/jbutilities/lib/ngStorage/ngStorage.min.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/lib/angular-ui/ui-bootstrap-tpls.min.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/lib/angular-gridster.min.js");
+
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbspa.controllers.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbspa.userdirectives.js");
+    Html.RequiresJs("/App_Plugins/jbutilities/js/jbspa.userresources.js");
+
+
+    Html.RequiresCss("/App_Plugins/jbutilities/lib/angular-gridster.min.css");
+    Html.RequiresCss("/App_Plugins/jbutilities/assets/css/jbspa.min.css");
+
+    // Surveys
+    Html.RequiresJs("/App_Plugins/jbsurvey/js/jbsurvey.models.js");
+    Html.RequiresJs("/App_Plugins/jbsurvey/js/jbsurvey.filters.js");
+    Html.RequiresJs("/App_Plugins/jbsurvey/js/jbsurvey.services.js");
+    Html.RequiresJs("/App_Plugins/jbsurvey/js/jbsurvey.userdirectives.js");
+    Html.RequiresJs("/App_Plugins/jbsurvey/js/jbsurvey.userresources.js");
+
+    // Enable animation on all pages.
+    Html.RequiresCss("~/Styles/plugin/animate.css");
+    Html.RequiresJs("~/Scripts/plugin/wow.min.js");
+
+    // Toastr
+    Html.RequiresCss("~/Styles/css/toastr.css");
+    Html.RequiresJs("~/Scripts/toastr.js");
+
+    // GDPR Cookie disclaimer.
+    Html.RequiresCss("~/Styles/plugin/ihavecookies.css");
+    Html.RequiresJs("~/Scripts/plugin/jquery.ihavecookies.js");
+
+
+    Html.RequiresJs("~/Scripts/underscore.min.js");
+
+    // Theme initialisation - including plugins used.
+    Html.RequiresJs("~/Scripts/ec/theme.js");
+
+    // Manage a video playlist.
+    Html.RequiresJs("~/Scripts/ec/jquery.videoPlaylist.js");
+    Html.RequiresJs("~/Scripts/ec/videoPlaylistManager.js");
+
+
+    // TODO: Fasttrack - upgrade or replace.
+    Html.RequiresJs("~/Scripts/jquery.validate.min.js");
+    Html.RequiresJs("~/Scripts/jquery.unobtrusive-ajax.min.js");
+    Html.RequiresJs("~/Scripts/jquery.validate.unobtrusive.min.js");
+    Html.RequiresJs("~/Scripts/underscore.min.js");
+
+    var pageHasSEO = Model as IEcAbstractSeo == null ? false : true;
+
+}
+
+<!DOCTYPE html>
+<html lang="en" ng-app="jbapp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    @if (pageHasSEO)
+    {
+        @Html.Partial("_SEO", Model, new ViewDataDictionary(ViewData) { { "GlobalSettings", configPage } })
+    }
+    else
+    {
+        <title>@Model.Name</title>
+    }
+    <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
+    <!--
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="/static/3.21.2/icons/favicons/apple-touch-icon-57x57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/static/3.21.2/icons/favicons/apple-touch-icon-76x76.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/static/3.21.2/icons/favicons/apple-touch-icon-120x120.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/static/3.21.2/icons/favicons/apple-touch-icon-152x152.png"/>
+    -->
+    <meta name="robots" content="index, follow">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @RenderSection("HeadScripts", false)
+    <script src="~/Scripts/ec/googleTagManager.js"></script>
+
+    @Html.RenderCssHere()
+
+</head>
+<body>
+  
+
+    <div class="sticky-footer-wrapper">
+        <header class="navbar-fixed-top   @(headerSection.SearchBar ? "search-bar" : null)">
+            @{
+                    @Html.Partial("ecHeaderSection", headerSection)
+            }
+        </header>
+        <div class="page-content navbar-fixed-top-margin">
+            @RenderBody()
+        </div>
+        <footer>
+            @{
+                if (footerSection != null)
+                {
+                    @Html.Partial("ecFooterSection", footerSection)
+                }
+            }
+        </footer>
+    </div>
+
+    @Html.RenderJsHere()
+    @Html.Partial("_FlashPartial")
+</body>
+</html>

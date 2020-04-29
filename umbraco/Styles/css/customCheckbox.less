@@ -1,0 +1,90 @@
+﻿@import "colors.less";
+/*
+    The custom checkbox has the following HTML after the plugin has operated on the label and
+    input elements.
+
+    <label class="is-custom-checkbox [is-custom-checkbox-vertical]" >One
+       <input type="checkbox" class="is-custom-checkbox" >
+       <span class="is-custom-checkbox"></span> 
+    </label>
+
+
+
+*/
+
+.is-custom-checkbox-vertical {
+  display: block; /* 1 checkbox per line */
+}
+
+/* Customize the label (the container) */
+label.is-custom-checkbox {
+  position: relative; /* allow custom checkbox to be positioned within the label */
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; /* No text selection */
+}
+
+/* Hide the browser's default checkbox */
+label.is-custom-checkbox input.is-custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox - from a span element adjacent to the input checkbox. */
+label.is-custom-checkbox span.is-custom-checkbox {
+    position: absolute;
+    top: 3px;
+    left: 4px; /* Allow for hover box shadow to show even with no margin or padding for the element.*/
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    box-shadow: 0px 0px 0 4px @blue-grey;
+}
+
+/* On mouse-over, add a grey background color */
+label.is-custom-checkbox:hover input.is-custom-checkbox ~ span.is-custom-checkbox {
+    background-color: #eee;
+}
+
+
+span.is-custom-checkbox:hover, label.is-custom-checkbox:hover span.is-custom-checkbox{
+    //box-shadow:0px 0px 0 4px lightblue;
+}
+
+/* When the checkbox is checked, add a white background */
+label.is-custom-checkbox input.is-custom-checkbox:checked ~ span.is-custom-checkbox{
+  background-color: white;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+span.is-custom-checkbox:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+label.is-custom-checkbox input.is-custom-checkbox:checked ~ span.is-custom-checkbox:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+label.is-custom-checkbox span.is-custom-checkbox:after {
+    left: 8px;
+    top: 0px;
+    width: 10px;
+    height: 20px;
+    border: solid @info-bg-color;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

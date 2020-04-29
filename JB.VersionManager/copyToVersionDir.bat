@@ -1,0 +1,1 @@
+copy "C:\Users\John Blur\Documents\Visual Studio\Projects\u8\johnblair\JB.VersionManager\bin\Release\JB.VersionManager.exe" "C:\Users\John Blur\Documents\Visual Studio\Projects\u8\johnblair\version"

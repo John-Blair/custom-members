@@ -1,0 +1,70 @@
+@import "../css/colors.less";
+
+#gdpr-cookie-message {
+    // Show cookie disclaimer at bottom right.
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    max-width: 375px;
+    background-color: black;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 6px 6px rgba(0,0,0,0.25);
+    // Appear above header and footer.
+    z-index:60;
+
+    p {
+        margin-bottom: 20px;
+        color: white;
+        font-size: 15px;
+        line-height: 1.5em;
+    }
+
+    button#ihavecookiesBtn {
+        margin-left: 0px !important;
+    }
+    
+    // Dialog header.
+    h4 {
+        color:white;
+        font-size: 18px;
+        font-weight: 500;
+        margin-top:0;
+        margin-bottom: 10px;
+    }
+
+    // Put Line after the dialog header - after its margin.
+    p:nth-of-type(1){
+        border-top: 1px solid @tab-border-colour;
+        padding-top:10px;
+    }
+
+    // Button container.
+    p:last-child {
+        margin-bottom: 0;
+        text-align: right;
+    }
+
+    // Against a black background - use the link hover colour for foreground.
+     a {
+        color: @tab-hover-colour;
+        text-decoration: none;
+        font-size: 15px;
+        padding-bottom: 2px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    // Make Accept Cookies button large to focus attention.
+    button{    
+        .btn-primary-forced;
+        line-height: 44px;
+        
+    }
+
+    // Not using advanced configuration.
+    button#gdpr-cookie-advanced {
+        display:none;
+    }
+}

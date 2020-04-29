@@ -1,0 +1,265 @@
+﻿.blue-gradient {
+  background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
+  /* IE6-9 */
+}
+.blue-grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1);
+  /* IE6-9 */
+}
+.gold-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eab92d+0,c79810+100;Yellow+3D+%232 */
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810', GradientType=0);
+  /* IE6-9 */
+}
+.box-shadow-blue-grey {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.btn-primary-forced {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -o-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88)) !important;
+  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  background-repeat: repeat-x !important;
+  border-color: #245580 !important;
+  color: white !important;
+  text-shadow: none !important;
+  background-color: none !important;
+}
+.btn-primary-forced:hover {
+  background-color: #265a88 !important;
+  background-position: 0 -15px !important;
+}
+.btn-primary-forced:focus {
+  background-position: unset !important;
+}
+.page-section + .user-questions-section {
+  margin-top: 20px;
+}
+.centred-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+.modal-container {
+  z-index: 2000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: #000000;
+  background-color: rgba(0, 0, 0, 0.4);
+  cursor: none;
+}
+.countdown-size {
+  width: 200px;
+  height: 200px;
+  font-size: 200px;
+  color: #2f5875;
+}
+.jb-circle {
+  border-radius: 50%;
+  display: inline-block;
+  width: 32px;
+  font-size: 26px;
+  line-height: 32px;
+  padding-left: 8px;
+  margin-right: 6px;
+  color: white;
+}
+.jb-circle.correct {
+  background-color: green;
+}
+.jb-circle.wrong {
+  background-color: red;
+}
+.user-questions-section .jb-ib {
+  display: inline-block;
+}
+.user-questions-section .jb-w-32 {
+  width: 32px;
+}
+.user-questions-section .jb-fs-32 {
+  font-size: 32px;
+}
+.user-questions-section .jb-lh-32 {
+  line-height: 32px;
+}
+.user-questions-section .question-mark {
+  font-size: 32px;
+  display: inline-block;
+  width: 32px;
+  line-height: 32px;
+  color: #337ab7;
+}
+.user-questions-section .question-text {
+  display: inline-block;
+  font-size: 32px;
+  line-height: 32px;
+  color: #337ab7;
+}
+.user-questions-section .question-result {
+  font-size: 32px;
+  display: inline-block;
+  width: 32px;
+  line-height: 32px;
+}
+.user-questions-section .panel-default > .panel-heading {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3 !important;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1) !important;
+  /* IE6-9 */
+  background-image: none;
+}
+.user-questions-section .answers-panel.panel-default > .panel-heading {
+  padding: 1px 15px;
+}
+.user-questions-section .answers-panel.panel-default > .panel-body {
+  padding: 0;
+}
+.user-questions-section .user-questions-content .btn-info {
+  background: #85b2d3;
+}
+.user-questions-section .user-questions-content .question-actions-container button,
+.user-questions-section .user-questions-content .finished-actions-container button {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.user-questions-section .user-questions-content .user-answer-radio {
+  width: 100% !important;
+  min-height: 16px;
+}
+.user-questions-section .user-questions-content .user-answer-label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 16px;
+  cursor: pointer;
+}
+.user-questions-section .user-questions-content .progress {
+  margin-bottom: 0px;
+}
+.user-questions-section .user-questions-content .well {
+  background: #85b2d3;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.user-questions-section .user-questions-content .user-answers-rows {
+  font-size: 16px;
+  line-height: 16px;
+}
+.user-questions-section .user-questions-content .user-answers-rows label {
+  font-weight: 400;
+  margin: 0px;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row {
+  padding: 5px;
+  border-bottom: 2px solid #EAEDED;
+  min-height: 38px;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row .user-answer-choice {
+  min-height: 31px;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row .user-answer-choice-letter {
+  display: inline-block;
+  width: 20px;
+  padding-top: 6px;
+  padding-left: 6px;
+  font-size: 18px;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row.correct {
+  background-color: lightgreen;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row.wrong {
+  border-top: 2px solid red;
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  border-bottom: 2px solid red;
+  background-color: pink;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row:last-child {
+  border-bottom: none;
+}
+.user-questions-section .user-questions-content .user-answers-rows .user-answer-row.wrong:last-child {
+  border-bottom: 2px solid red;
+}
+.user-questions-section .user-questions-content .question-correct {
+  color: green;
+}
+.user-questions-section .user-questions-content .question-wrong {
+  color: red;
+}
+.user-questions-section .quiz-finished .panel-default > .panel-body {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.user-questions-section .quiz-finished .user-summary-rows > .user-summary-row:nth-of-type(even) {
+  background-color: #f9f9f9;
+}
+.user-questions-section .quiz-finished .user-summary-rows > .user-summary-row:not(:first-child):hover {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3 !important;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%) !important;
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1) !important;
+  /* IE6-9 */
+}
+.user-questions-section .quiz-finished .user-summary-rows .user-summary-row:first-child {
+  font-weight: bold;
+}
+.user-questions-section .quiz-finished .user-summary-rows .user-summary-row:first-child .user-summary-wrong-answer {
+  color: black;
+}
+.user-questions-section .quiz-finished .user-summary-rows .user-summary-row {
+  padding: 5px;
+  border-bottom: 2px solid #EAEDED;
+}
+.user-questions-section .quiz-finished .user-summary-rows .user-summary-row .user-summary-wrong-answer {
+  color: red;
+}
+.user-questions-section .quiz-finished .user-summary-rows .user-summary-row:last-child {
+  border-bottom: none;
+}

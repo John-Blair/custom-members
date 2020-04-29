@@ -1,0 +1,74 @@
+@import "colors.less";
+
+.m-clear-both:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+}
+
+
+
+.m-center {
+    text-align: center;
+}
+.m-left {
+    text-align: left;
+}
+
+.m-right {
+    text-align: right;
+}
+
+.m-hide {
+    display: none;
+}
+.m-show {
+    display: block;
+}
+.m-show-inline, .m-ib {
+    display: inline-block;
+}
+ 
+.m-line-height-10{
+    line-height:10px;
+}
+
+.m-clear-both{
+    clear:both;
+}
+
+.m-w-32 {
+    width: 32px;
+}
+
+.m-fs-32 {
+    font-size: 32px;
+}
+
+.m-lh-32 {
+    line-height: 32px;
+}
+
+
+.m-circle {
+    border-radius: 50%;
+    display: inline-block;
+    width: 32px;
+    font-size: 26px;
+    line-height: 32px;
+    padding-left: 8px;
+    margin-right: 6px;
+    color: black;
+    background-color: lightblue;
+
+    &.correct {
+        background-color: green;
+    }
+
+    &.wrong {
+        background-color: red;
+    }
+}
+

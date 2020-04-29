@@ -1,0 +1,42 @@
+﻿@inherits UmbracoViewPage<EcUserCommentsSection>
+@{
+
+    Html.RequiresCss("~/styles/css/userCommentsSection.css");
+    // Page => Page Section Container => User Comment Section.
+    var contentId = Model.Parent.Parent.Id;
+
+    var memberIsLoggedOn = Umbraco.MemberIsLoggedOn();
+    int? memberId = null;
+    var name = string.Empty;
+
+    if (memberIsLoggedOn)
+    {
+        memberId = Umbraco.MembershipHelper.GetCurrentMember().Id;
+
+        var member = Umbraco.MembershipHelper.GetCurrentMember();
+        name = member.Value("firstName").ToString() + " "+ member.Value("lastName").ToString();
+    }
+
+}
+<section class="page-section user-comments-section container">
+	@if (!Model.DisableComments && !(Model.DisableGuest && !memberIsLoggedOn))
+	{
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4>Comments</h4>
+			</div>
+            <div class="panel-body">
+                @if (!memberIsLoggedOn)
+                {
+                    <jb-user-comments content-id="@contentId"></jb-user-comments>
+
+                }
+                else
+                {
+                    <jb-user-comments name="@name" member-id="@memberId" content-id="@contentId"></jb-user-comments>
+                }
+            </div>
+		</div>
+
+	}
+</section>

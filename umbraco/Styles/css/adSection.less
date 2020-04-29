@@ -1,0 +1,24 @@
+.page-section + .ad-section {
+  //margin-top:20px; // Give some spacing from any previous section - not needed as page title has top margin.
+}
+
+.ad-section {
+    //background-color:green;
+    position: relative;
+    
+    // Let the ad determine the relevant padding for this container.
+    &.container-fluid {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .ad-defaults {
+        padding-left: 0px;
+        padding-right: 0px;
+        background-color: red;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+

@@ -1,0 +1,406 @@
+@import "colors.less";
+@import "marketingStyles.less";
+
+.page-section + .user-survey-section {
+    margin-top: 20px; // Give some spacing from any previous section.
+}
+
+
+.user-survey-section {
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .question-mark {
+        .m-fs-32;
+        .m-ib;
+        .m-w-32;
+        .m-lh-32;
+        color: @info-bg-color;
+    }
+
+    .question-text {
+        .m-ib;
+        .m-fs-32;
+        .m-lh-32;
+        color: @info-bg-color;
+    }
+
+    .question-result {
+        .m-fs-32;
+        .m-ib;
+        .m-w-32;
+        .m-lh-32;
+    }
+
+    .panel-default > .panel-heading {
+        .blue-grey-gradient !important;
+        background-image: none;
+    }
+
+    .answers-panel.panel-default > .panel-heading {
+        padding: 1px 15px;
+    }
+
+    .answers-panel.panel-default > .panel-body {
+        padding: 0;
+    }
+
+    .panel-body {
+
+        h1, h2, h3, h4, h5, h6 {
+            margin: 0px;
+        }
+    }
+
+    .user-questions-content {
+
+
+        .btn-info {
+            background: @blue-grey;
+        }
+
+        .question-actions-container, .finished-actions-container {
+            button {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                margin-left:10px;
+            }
+        }
+
+
+        .finished-actions-container:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+        }
+
+        .user-answer-radio {
+            width: 100% !important;
+            min-height: 16px;
+        }
+
+        .user-answer-label {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-height: 16px;
+            cursor: pointer;
+        }
+
+        .progress {
+            margin-bottom: 0px;
+        }
+
+        .well {
+            background: @blue-grey;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .user-answers-rows {
+            font-size: 16px;
+            line-height: 16px;
+
+            label {
+                font-weight: 400;
+                margin: 0px;
+            }
+
+            .user-answer-row {
+                //margin-bottom: 12px;
+                padding: 5px;
+                border-bottom: 2px solid @page-content-bg-color;
+                // allow for custom radio and its shadow.
+                min-height: 38px;
+
+                .user-answer-choice {
+                    // Mobile.
+                    // allow for custom radio and its shadow.
+                    min-height: 31px;
+                }
+
+                .user-answer-text {
+                    padding-top: 6px;
+                    padding-bottom: 6px;
+
+                    .user-answer-currency-label {
+                        // Align with adjacent input field - such that label is vertically centred
+                        line-height: 24px;
+                    }
+                }
+
+
+                .user-answer-choice-letter {
+                    display: inline-block;
+                    width: 20px;
+                    padding-top: 6px;
+                    padding-left: 6px;
+                    font-size: 18px
+                }
+
+                &.correct {
+                    background-color: lightgreen;
+                }
+
+                &.wrong {
+                    border-top: 2px solid red;
+                    border-left: 2px solid red;
+                    border-right: 2px solid red;
+                    border-bottom: 2px solid red;
+                    background-color: pink;
+                }
+            }
+
+            .user-answer-row:last-child {
+                border-bottom: none;
+            }
+
+            .user-answer-row.wrong:last-child {
+                border-bottom: 2px solid red;
+            }
+        }
+
+
+
+        .question-correct {
+            color: green;
+        }
+
+        .question-wrong {
+            color: red;
+        }
+    }
+
+    .quiz-finished {
+
+        .panel-default > .panel-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .user-summary-rows > .user-summary-row:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-summary-rows > .user-summary-row:not(:first-child):hover {
+            .blue-grey-gradient !important;
+        }
+
+
+        .user-summary-rows {
+            .user-summary-row:first-child {
+                font-weight: bold;
+            }
+
+            .user-summary-row {
+                padding: 5px;
+                border-bottom: 2px solid @page-content-bg-color;
+
+                .user-summary-result {
+                }
+
+                .user-summary-question, .user-summary-id, .user-summary-selected-answer {
+                    line-height: 32px;
+                }
+            }
+
+            .user-summary-row:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .your-details {
+        .buttons-container {
+            padding: 10px;
+        }
+
+        .buttons-container:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+        }
+
+
+        input.ng-invalid {
+            background: pink;
+        }
+
+
+        .panel-default > .panel-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .user-header-rows {
+            font-size: 22px;
+        }
+
+        .user-header-rows > .user-header-row:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-header-rows > .user-header-row > div:first-child {
+            .blue-grey-gradient !important;
+        }
+
+        .user-header-row {
+            line-height: 40px;
+
+            input {
+                line-height: 32px;
+                width: 100%;
+            }
+        }
+
+        .user-header-row:after {
+            content: ".";
+            display: block;
+            clear: both;
+            visibility: hidden;
+            line-height: 0;
+            height: 0;
+        }
+
+
+        .user-header-key {
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-header-required {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-header-value {
+            border-bottom: 1px solid #ddd;
+        }
+    }
+
+    .survey-report {
+
+        .panel-default > .panel-body {
+            padding-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        .user-header-rows {
+            font-size: 22px;
+        }
+
+        .user-header-rows > .user-header-row:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-header-rows > .user-header-row > div:first-child {
+            .blue-grey-gradient !important;
+        }
+
+        .user-header-key {
+            line-height: 32px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .user-header-value {
+            line-height: 32px;
+            border-bottom: 1px solid #ddd;
+        }
+
+
+        .user-summary-rows > .user-summary-row:nth-of-type(even) {
+            background-color: #f9f9f9;
+        }
+
+        .user-summary-rows > .user-summary-row:not(:first-child):hover {
+            .blue-grey-gradient !important;
+        }
+
+
+        .user-summary-rows {
+            font-size: 22px;
+
+            .user-summary-row:first-child {
+                font-weight: bold;
+            }
+
+            .user-summary-row {
+                //padding: 5px; There is padding on the cells and this makes the 1st col align with the header text.
+                border-bottom: 2px solid @page-content-bg-color;
+
+                .user-summary-result {
+                }
+
+                .user-summary-question, .user-summary-id, .user-summary-answer, .user-summary-response-count, .user-summary-response-pc-detail, .user-summary-response-pc, .user-summary-response-pc-header {
+                    line-height: 32px;
+                }
+
+                .user-summary-response-pc {
+                    position: relative;
+                    border: 1px solid black;
+                    height: 32px;
+
+                    .user-summary-response-pc-progress {
+                        // Use width on the style attribute for the width of the progress bar.
+                        display: inline-block;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        .gold-gradient;
+                        position: absolute;
+                        // Progress bar should appear behind any % text.
+                        z-index: 1;
+                    }
+
+                    .user-summary-response-pc-label {
+                        // Use width on the style attribute for the width of the progress bar.
+                        display: inline-block;
+                        top: 0;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        text-align: center;
+                        position: absolute;
+                        // Progress bar should appear behind any % text.
+                        z-index: 2;
+                    }
+                }
+
+
+                .user-summary-question {
+                    font-weight: bold;
+                }
+            }
+            // Force the row to contain all its content all of which is floated.
+            .user-summary-row:after {
+                content: ".";
+                display: block;
+                clear: both;
+                visibility: hidden;
+                line-height: 0;
+                height: 0;
+            }
+
+
+            .user-summary-row:last-child {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+
+
+

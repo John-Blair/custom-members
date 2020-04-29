@@ -1,0 +1,108 @@
+@import "colors.less";
+
+.page-section + .tabs-section {
+  margin-top:20px; // Give some spacing from any previous section   
+}
+
+.tabs-section {
+    position: relative;
+    // Use the containers default padding of 15px.
+    //margin-left: 10px;
+    //margin-right: 10px;
+    color: @text-color;
+
+    // Give a box look to the tab content.
+    .tab-content{
+        border: 1px solid  @tab-border-colour;
+        background-color: @tab-background-colour;
+        
+        // Keep  content away from the edge.
+        .tab-pane{
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+    }
+
+    
+    .tab-title{
+        a{
+            background-color: @tab-background-colour;
+
+            // Rounded tab top corners.
+            border-radius : 20px 20px 0 0;
+
+            border-left: 1px solid  @tab-border-colour;
+            border-right: 1px solid  @tab-border-colour;
+            border-top: 1px solid  @tab-border-colour;
+            //No need for a bottom border on the tabs as the tab content has a top bordr running under all the tabs.
+            //The active tab is moved down over this border to hide it and show the selected tab as borderless with its content.
+            color: @text-color;
+            text-decoration: none;
+             &:hover,
+             &:focus {
+                color: @text-color;
+                text-decoration:  none;
+               
+              }
+             // Make the tab hover similar to the footer link hover.
+             &:hover{
+                  background-color: @tab-hover-colour;
+             }
+        }
+    }
+        
+    .tab-title.active a{
+        // Add a top line to the active tab for visual reference.
+        // Avoid it clashing with the existing top border.
+        box-shadow: inset 0 4px @tab-hover-colour;
+        // Remove the default top border in place of the box-shadow.
+        border-top: 0px solid transparent !important;
+        // Move the tab over the content to hide the top border of the content for this tab only.
+        position: relative;
+        top: 2px;
+
+        &:hover{
+            // Remove the default top border in place of the box-shadow.
+            border-top: 0px solid transparent  !important;
+        }
+    }
+
+    // Remove 2px margin from last tab so it aligns with the edge of the tab content.
+    .nav-tabs > li:last-child > a {
+        margin-right: 0px;
+    }
+
+    // Override bootstrap background.
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+        background-color: @tab-background-colour;
+        color: @text-color;
+        border: 1px solid @tab-border-colour;
+        border-bottom-color: transparent;
+    }
+
+}
+
+
+
+/*Content Animation*/
+@keyframes fadeInScale {
+  0% {
+  	transform: scale(0.99);
+  	opacity: 0;
+  }
+  
+  100% {
+  	transform: scale(1);
+  	opacity: 1;
+  }
+}
+
+//mobile
+@media (max-width: 767px) {
+    .tabs-section {
+        .nav-tabs > li {
+            width:100% !important;
+        }
+    }
+
+}

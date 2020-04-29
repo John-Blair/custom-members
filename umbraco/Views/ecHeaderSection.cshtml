@@ -1,0 +1,213 @@
+﻿@inherits UmbracoViewPage<EcHeaderSection>
+@using JB.Helpers
+
+
+@{
+    EcHeaderSection headerSection = Model;
+    IEnumerable<EcAbstractHeaderMenuColumn> topLevelMenu = headerSection.Menu;
+    IPublishedContent logo = headerSection.Logo;
+    //var currentCustomer = this.CurrentCustomer;
+
+    EcHomePage homePage = (EcHomePage)Umbraco.ContentAtRoot().FirstOrDefault(x => x.ContentType.Alias.Equals("ecHomePage"));
+
+    Html.RequiresCss("~/styles/css/headerSection.css");
+    Html.RequiresJs("~/Scripts/ec/headerSection.js");
+}
+
+<nav class="navbar navbar-default ">
+    <div class="container-fluid">
+        @*<!-- Brand and toggle get grouped for better mobile display -->*@
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">@RenderImage(headerSection.Logo)</a>
+        </div>
+
+
+        @*Navbar links*@
+
+        @{ // Render the top menu links and submenu links.
+            if (topLevelMenu != null)
+            {
+
+                <div class="collapse navbar-collapse" id="top-menu">
+                    <ul class="nav navbar-nav">
+
+                        @foreach (EcAbstractHeaderMenuColumn menuColumn in topLevelMenu.Where(x => x.IsVisible()))
+                        {
+
+                            if (menuColumn.Submenu.Count() == 0)
+                            {
+                                // Just a standard link
+                                if (menuColumn.MenuItem != null)
+                                {
+                                    // Class used for handling transition here from submenu.
+                                    <li>@RenderLink(menuColumn.MenuItem, "top-level-menu-item", menuColumn.Title)</li>
+                                }
+                                else
+                                {
+                                    // Class used for handling transition here from submenu.
+                                    <li>@RenderExternalLink(menuColumn.ExternalMenuItem, "top-level-menu-item", menuColumn.Title)</li>
+                                }
+
+                            }
+                            else
+                            {
+                                // Menu link has a submenu.
+                                <li class="dropdown ">
+                                    @RenderDropdownLink(menuColumn.MenuItem, title: menuColumn.Title)
+
+                                    @*Render the submenu*@
+                                    @RenderNavigation(menuColumn.Submenu, "dropdown-menu")
+
+                                </li>
+                            }
+                        }
+                    </ul>
+
+                    @* Basket and Login menu on the right.*@
+                    @if (!headerSection.HideLogin)
+                    {
+
+                        <ul class="nav navbar-nav navbar-right mui-nav-right">
+                            @*<li>
+                    <a href="/basket/" class="top-level-menu-item"><span class="glyphicon glyphicon-shopping-cart " aria-hidden="true"></span> Basket (<span data-muilabel="basketcount">0</span>)</a>
+                </li>
+
+                <li @(!true ? MvcHtmlString.Create("class=\"mui-quickcheckout\"") : MvcHtmlString.Empty) data-value="quickcheckout"><a href="/checkout/" class="success">Quick Checkout</a></li>*@
+
+
+                            @if (!Umbraco.MemberIsLoggedOn())
+                            {
+                                @* Just a login link - no dropdown. *@
+                                <li>
+                                    <a href="/Business-Account/">
+                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                        <span>Login</span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="dropdown">
+                                    @{
+                                        var member = Umbraco.MembershipHelper.GetCurrentMember();
+                                        var firstName = member.Value("firstName");
+                                    }
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span>@firstName</span><span class="caret hidden-xs"></span></a>
+
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/business-account/"><span>Account</span></a></li>
+                                        <li>@Html.ActionLink("Logout", "Logout", "CustomerMembership", new { redirectId = homePage.Id }, null)</li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    }
+
+                </div>
+            }
+        }
+
+    </div>
+</nav>
+
+@if (headerSection.SearchBar)
+{
+    @Html.Partial("ecSearchSection")
+}
+
+@helper RenderNavigation(IEnumerable<Umbraco.Web.Models.Link> items, string listClass = "")
+{
+    // Render the submenu - 1 level.
+    // Note this is the adjacent element to the main menu link.
+    if (items.Any())
+    {
+        var columns = items.Columns("-");
+        var columnsCount = columns.ToList().Count;
+        if (columnsCount == 1)
+        {
+            <ul class="@listClass">
+                @foreach (var item in items)
+                {
+                    <li>
+                        <a href="@item.Url" target="@item.Target">
+                            @item.Name
+                        </a>
+
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            var colClasses = new string[] { "", "", "menu-col-6", "menu-col-4", "menu-col-3" };
+            var colClass = colClasses[columnsCount];
+            // Multi-column dropdown list.
+            // Wrap in a div and put each column in a separate list.
+            // Keep the same list class so that the positioning of the multi-columns is the same as for a single column.
+            <div class="@listClass menu-cols">
+                @foreach (var column in columns)
+                {
+                    <ul class="menu-col @colClass">
+                        @foreach (var item in column)
+                        {
+                            <li>
+                                <a href="@item.Url" target="@item.Target">
+                                    @item.Name
+                                </a>
+
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+
+    }
+}
+
+@helper RenderImage(IPublishedContent image, string cssClass = "")
+{
+    // Logo.
+    if (image != null)
+    {
+        <img src="@image.Url" class="@cssClass" />
+    }
+}
+
+
+@helper RenderLink(IPublishedContent link, string cssClass = "", string title = "")
+{
+    // A standard link.
+    if (link != null)
+    {
+        var linkFormat = ""; // $"ID:{link.Id}, Path:{link.Path}, Name:{link.Name}, Url:{link.Url}";
+
+        var linkName = string.IsNullOrEmpty(title) ? link.Name : title;
+        <a href="@link.Url" class="@cssClass"  title="@linkFormat">
+            @linkName
+        </a>
+    }
+}
+@helper RenderExternalLink(string externalLink, string cssClass = "", string title = "")
+{
+    <a href="@externalLink" class="@cssClass">
+        @title
+    </a>
+}
+@helper RenderDropdownLink(IPublishedContent link, string cssClass = "", string title = "")
+{
+    // Render a standard bootstrap dropdown link.
+    // Hide the dropdown arrow in mobile as the dropdown is switched to an accordion container.
+    if (link != null)
+    {
+        var linkName = string.IsNullOrEmpty(title) ? link.Name : title;
+        <a href="@link.Url" class="dropdown-toggle @cssClass" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@linkName<span class="caret hidden-xs"></span></a>
+
+    }
+}

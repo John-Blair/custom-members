@@ -1,0 +1,67 @@
+﻿@inherits UmbracoViewPage<EcVideoPlaylistSection>
+@using JB.Helpers
+@{
+    EcVideoPlaylistSection videoPlaylistSection = Model;
+    IEnumerable<EcVideoSlide> videoPlaylist = videoPlaylistSection.Playlist;
+
+    Html.RequiresCss("~/styles/css/videoPlaylistSection.css");
+
+    string playlist = string.Empty;
+    string videoUrl = string.Empty;
+    string firstVideoUrl = string.Empty;
+    bool firstVideoIsYoutube = false;
+
+
+}
+@if (videoPlaylist.Count() > 0)
+{
+
+    foreach (EcVideoSlide videoSlide in videoPlaylist.Where(x => x.IsVisible()))
+    {
+        videoUrl = (videoSlide.ExternalVideo.NullIfEmpty() ?? videoSlide.Video?.Url).EmptyIfNull();
+        if (videoUrl.Length > 0)
+        {
+            firstVideoUrl = videoUrl;
+            firstVideoIsYoutube = videoSlide.IsYoutube;
+            break;
+        }
+    }
+
+
+    <section class="page-section video-playlist-section  @videoPlaylistSection.Container">
+        <div class="row video-row">
+            <div class="col-md-9">
+                <div class="video-wrapper">
+                    <iframe id="currentVideoIframe" src="@firstVideoUrl" frameborder="0" allowfullscreen  class="@(!firstVideoIsYoutube ? "hidden":null)"></iframe>
+                    <video id="currentVideo" controls class="@(firstVideoIsYoutube ? "hidden":null)">
+                        <source src="@firstVideoUrl" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="list-group video-slides">
+                    @foreach (EcVideoSlide videoSlide in videoPlaylist.Where(x => x.IsVisible()))
+                    {
+                        videoUrl = ( videoSlide.ExternalVideo.NullIfEmpty() ?? videoSlide.Video?.Url).EmptyIfNull();
+                        if (videoUrl.Length > 0 && videoSlide.IsYoutube)
+                        {
+                            playlist = videoUrl.Split('/').Last();
+                        }
+
+                        if (videoUrl.Length > 0)
+                        {
+                                <a href="#" class="list-group-item @(firstVideoUrl == videoUrl ? "active":null)" data-href-for-video="@videoUrl" data-is-youtube="@(videoSlide.IsYoutube ? "1": null)">@videoSlide.Title</a>
+                        }
+                    }
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+    </section>
+}
+
+

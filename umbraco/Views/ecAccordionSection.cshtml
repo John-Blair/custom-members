@@ -1,0 +1,47 @@
+﻿@inherits UmbracoViewPage<EcAccordionSection>
+@using ClientDependency.Core.Mvc;
+@{
+
+    EcAccordionSection accordionSection = Model;
+
+    IEnumerable<EcAccordionPanel> accordion = accordionSection.Accordion;
+
+    Html.RequiresCss("~/styles/css/accordionSection.css");
+}
+@if (accordion != null && accordion.Any())
+{
+    int visiblePanels = accordion.Where(x => x.IsVisible()).Count();
+    long startUniquePanelRangeId = new int().UniqueIdRange(visiblePanels);
+    bool first = true; // Show first panel open
+    long panelId = startUniquePanelRangeId;
+
+    // Document types stored in the grid layout data type do not have node ids.
+    long accordionSectionId = new int().UniqueId();
+
+    <div class="page-section accordion-section panel-group @Model.Container" id="@accordionSectionId" role="tablist" aria-multiselectable="true">
+        @foreach (EcAccordionPanel panel in accordion.Where(x => x.IsVisible()))
+        {
+            string title = panel.Title;
+            string panelHeadingId = "ph" + panelId.ToString();
+            string panelBodyId = "pb" + panelId.ToString();
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="@panelHeadingId">
+                    <h4 class="panel-title">
+                        <a class="@(!first ? "collapsed" : null)" role="button" data-toggle="collapse" data-parent="#@accordionSectionId" href="#@panelBodyId" aria-expanded="@(first ? "true" : "false")" aria-controls="@panelBodyId">
+                            @title
+                        </a>
+                    </h4>
+                </div>
+                <div id="@panelBodyId" class="panel-collapse collapse @(first ? "in" : null)" role="tabpanel" aria-labelledby="@panelHeadingId">
+                    <div class="panel-body">
+                        @Html.Raw(panel.Body)
+                    </div>
+                </div>
+            </div>
+            panelId++;
+            first = false;
+        }
+    </div>
+}
+

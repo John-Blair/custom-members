@@ -1,0 +1,10 @@
+﻿.page-section + .grid-section {
+  margin-top: 20px;
+}
+.grid-section {
+  position: relative;
+}
+.grid-section .container-fluid {
+  padding-left: 0px;
+  padding-right: 0px;
+}

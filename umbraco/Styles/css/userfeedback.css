@@ -1,0 +1,140 @@
+﻿.blue-gradient {
+  background: -moz-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #1e5799 0%, #7db9e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #1e5799 0%, #7db9e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e5799', endColorstr='#7db9e8', GradientType=1);
+  /* IE6-9 */
+}
+.blue-grey-gradient {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#85b2d3+0,a7c7dc+100 */
+  background: #85b2d3;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #85b2d3 0%, #a7c7dc 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #85b2d3 0%, #a7c7dc 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#85b2d3', endColorstr='#a7c7dc', GradientType=1);
+  /* IE6-9 */
+}
+.gold-gradient {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#eab92d+0,c79810+100;Yellow+3D+%232 */
+  background: #eab92d;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #eab92d 0%, #c79810 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #eab92d 0%, #c79810 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eab92d', endColorstr='#c79810', GradientType=0);
+  /* IE6-9 */
+}
+.box-shadow-blue-grey {
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4);
+}
+.btn-primary-forced {
+  background-image: -webkit-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -o-linear-gradient(top, #337ab7 0%, #265a88 100%) !important;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#337ab7), to(#265a88)) !important;
+  background-image: linear-gradient(to bottom, #337ab7 0%, #265a88 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff337ab7', endColorstr='#ff265a88', GradientType=0) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false) !important;
+  background-repeat: repeat-x !important;
+  border-color: #245580 !important;
+  color: white !important;
+  text-shadow: none !important;
+  background-color: none !important;
+}
+.btn-primary-forced:hover {
+  background-color: #265a88 !important;
+  background-position: 0 -15px !important;
+}
+.btn-primary-forced:focus {
+  background-position: unset !important;
+}
+.user-feedback-content {
+  padding-top: 40px;
+  padding-right: 80px;
+  padding-bottom: 40px;
+  padding-left: 80px;
+  text-align: left;
+}
+.user-feedback-content .title {
+  display: inline-block;
+  font-size: 18px;
+  margin-right: 30px;
+  font-weight: 500;
+  padding: 22px 0;
+}
+.user-feedback-content .button-group {
+  display: inline;
+}
+.user-feedback-content .button-group .btn-feedback {
+  background-color: white;
+  border: 2px solid #a7c4da;
+  border-radius: 5px;
+  color: #337ab7;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 7px 10px 7px 0;
+  min-width: 110px;
+  padding: 12px 6px;
+  position: relative;
+  text-align: center;
+}
+.user-feedback-content .button-group .btn-feedback.pull-right {
+  margin-right: 0px;
+}
+@media (max-width: 767px) {
+  .user-feedback-content .button-group .btn-feedback {
+    width: 100%;
+  }
+}
+.user-feedback-content .button-group .btn-feedback:focus::before {
+  opacity: 0.1;
+}
+.user-feedback-content .button-group .btn-feedback:hover::before {
+  opacity: 0.08;
+  width: 100%;
+}
+.user-feedback-content .button-group .btn-feedback:before,
+.user-feedback-content .button-group .btn-feedback:after {
+  background: currentColor;
+  border-radius: 4px;
+  bottom: 0;
+  content: '';
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  width: 0%;
+  top: 0;
+  transition: opacity 15ms linear, width 500ms linear;
+}
+.user-feedback-content .no-answer .how-to-improve {
+  margin-bottom: 10px;
+}
+.user-feedback-content .no-answer .user-feedback-create .comment textarea {
+  width: 100%;
+  font-size: 15px;
+  line-height: 21px;
+  background: white;
+  border: 1px solid #a7c4da;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+  padding: 20px;
+}
+.user-feedback-content .no-answer .user-feedback-create .comment textarea:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #85b2d3;
+  -webkit-appearance: none;
+}

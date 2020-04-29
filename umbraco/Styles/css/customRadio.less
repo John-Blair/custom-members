@@ -1,0 +1,85 @@
+﻿@import "colors.less";
+
+/*
+    The custom radio has the following HTML after the plugin has operated on the label and
+    input elements.
+
+    <label class="is-custom-radio [is-custom-radio-vertical]" >One
+       <input type="radio" class="is-custom-radio" >
+       <span class="is-custom-radio"></span> 
+    </label>
+
+
+
+*/
+
+.is-custom-radio-vertical {
+  display: block; /* 1 radio per line */
+}
+
+/* Customize the label (the container) */
+label.is-custom-radio {
+  position: relative; /* allow custom radio to be positioned within the label */
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; /* No text selection */
+}
+
+/* Hide the browser's default radio */
+label.is-custom-radio input.is-custom-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom radio - from a span element adjacent to the input radio. */
+label.is-custom-radio span.is-custom-radio {
+    position: absolute;
+    top: 3px;
+    left: 4px; /* Allow for hover box shadow to show even with no margin or padding for the element.*/
+    height: 25px;
+    width: 25px;
+    /* Make it circular*/
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 0px 0 4px @blue-grey ;
+}
+
+/* On mouse-over, add a background color */
+    label.is-custom-radio:hover input.is-custom-radio ~ span.is-custom-radio {
+        background-color: #eee;
+    }
+
+/* When the radio is checked, add a blue background */
+label.is-custom-radio input.is-custom-radio:checked ~ span.is-custom-radio {
+    background-color: @info-bg-color;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+span.is-custom-radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+label.is-custom-radio input.is-custom-radio:checked ~ span.is-custom-radio:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+label.is-custom-radio span.is-custom-radio:after {
+    top: 9px;
+	left: 9px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: white;
+}

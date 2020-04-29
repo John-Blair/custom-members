@@ -1,0 +1,15 @@
+﻿@inherits UmbracoViewPage<EcFeaturedProductsSection>
+@using ClientDependency.Core.Mvc;
+@{
+    EcFeaturedProductsSection featuredProductsSection = Model;
+
+    Html.RequiresCss("~/styles/css/featuredProductsSection.css");
+
+
+}
+<section class="page-section featured-products-section container">
+
+    @Html.Partial("_Title", new { Title = featuredProductsSection.Title , IsMainTitle = featuredProductsSection.IsMainTitle}.ToExpando())
+    
+    @Html.Partial("_ProductBoxList", featuredProductsSection.Products)   
+</section>

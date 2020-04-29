@@ -1,0 +1,34 @@
+﻿@inherits UmbracoViewPage<EcMemberSection>
+@using JB.Helpers
+@{
+    EcMemberSection textSection = Model;
+
+    Html.RequiresCss("~/styles/css/textSection.css");
+
+
+
+}
+<section class="page-section text-section container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-title">
+                @if (Umbraco.MemberIsLoggedOn())
+                {
+                    var member = Umbraco.MembershipHelper.GetCurrentMember();
+
+                    <h1>Welcome @Umbraco.MembershipHelper.CurrentUserName </h1>
+                    <p>User Id is  @Umbraco.MembershipHelper.GetCurrentMemberId()</p>
+                    <p>First Name is  @member.Value("firstName")</p>
+                    <p>Last Name is  @member.Value("lastName")</p>
+                    <p>PIN is  @member.Value("pin")</p>
+                }
+                else
+                {
+                    <h1>You are not logged on!</h1>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+

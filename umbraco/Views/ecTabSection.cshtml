@@ -1,0 +1,72 @@
+﻿@inherits UmbracoViewPage<EcTabSection>
+@{
+
+    EcTabSection tabSection = Model;
+
+    IEnumerable<EcTab> tabs = tabSection.Tabs;
+
+    Html.RequiresCss("~/styles/css/tabSection.css");
+}
+
+@if (tabs != null && tabs.Any())
+{
+    // Doc Types stored in grid layout do not have valid node ids.
+    int visibleTabs = tabs.Where(x => x.IsVisible()).Count();
+    long startUniqueTabRangeId = new int().UniqueIdRange(visibleTabs);
+    double tabPercent = (int)100 / visibleTabs;
+
+    //Specials
+    if (visibleTabs == 2)
+    {
+        tabPercent = 50;
+    }
+    else if (visibleTabs == 3) {
+        tabPercent = 33.33;
+    }
+
+    <div class="page-section tabs-section  @Model.Container" >
+        <ul class="nav nav-tabs" role="tablist">
+            @{
+                long tabId = startUniqueTabRangeId;
+                bool first = true; // Show first tab open
+                string title;
+                string tabBodyId;
+                const string tabBodyPrefix = "tb";
+            }
+
+            @foreach (EcTab tab in tabs.Where(x => x.IsVisible()))
+            {
+                title = tab.Title;
+                tabBodyId = tabBodyPrefix + tabId.ToString();
+
+
+                // Tab Title
+                <li role="presentation" class="tab-title @(first ? "active": null)" style="min-width:@tabPercent%"><a href="#@tabBodyId" aria-controls="@tabBodyId" role="tab" data-toggle="tab" >@title</a></li>
+
+                tabId++;
+                first = false;
+            }
+        </ul>
+        <div class="tab-content">
+            @{
+                //Reset ids for the body.
+                tabId = startUniqueTabRangeId;
+                first = true; // Show first tab open
+            }
+
+            @foreach (EcTab tab in tabs.Where(x => x.IsVisible()))
+            {
+                tabBodyId = tabBodyPrefix + tabId.ToString();
+
+                // Tab Body
+                <div role="tabpanel" class="tab-pane  @(first ? " active": null)" id="@tabBodyId">
+                    @Html.Raw(tab.Body)
+                </div>
+
+                tabId++;
+                first = false;
+            }
+        </div>
+   </div>
+}
+

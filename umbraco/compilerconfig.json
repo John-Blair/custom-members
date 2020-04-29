@@ -1,0 +1,94 @@
+﻿[
+  {
+    "outputFile": "Styles/css/theme-overrides.css",
+    "inputFile": "Styles/css/theme-overrides.less"
+  },
+  {
+    "outputFile": "Styles/css/iFrameSection.css",
+    "inputFile": "Styles/css/iFrameSection.less"
+  },
+  {
+    "outputFile": "Styles/css/loginSection.css",
+    "inputFile": "Styles/css/loginSection.less"
+  },
+  {
+    "outputFile": "Styles/css/searchSection.css",
+    "inputFile": "Styles/css/searchSection.less"
+  },
+  {
+    "outputFile": "Styles/css/textSection.css",
+    "inputFile": "Styles/css/textSection.less"
+  },
+  {
+    "outputFile": "Styles/css/accordionSection.css",
+    "inputFile": "Styles/css/accordionSection.less"
+  },
+  {
+    "outputFile": "Styles/css/footerSection.css",
+    "inputFile": "Styles/css/footerSection.less"
+  },
+  {
+    "outputFile": "Styles/css/headerSection.css",
+    "inputFile": "Styles/css/headerSection.less"
+  },
+  {
+    "outputFile": "Styles/css/pageSection.css",
+    "inputFile": "Styles/css/pageSection.less"
+  },
+  {
+    "outputFile": "Styles/css/videoSection.css",
+    "inputFile": "Styles/css/videoSection.less"
+  },
+  {
+    "outputFile": "Styles/css/videoPlaylistSection.css",
+    "inputFile": "Styles/css/videoPlaylistSection.less"
+  },
+  {
+    "outputFile": "Styles/plugin/ihavecookies.css",
+    "inputFile": "Styles/plugin/ihavecookies.less"
+  },
+  {
+    "outputFile": "Styles/css/errorSection.css",
+    "inputFile": "Styles/css/errorSection.less"
+  },
+  {
+    "outputFile": "Styles/css/discussSection.css",
+    "inputFile": "Styles/css/discussSection.less"
+  },
+  {
+    "outputFile": "Styles/css/userCommentsSection.css",
+    "inputFile": "Styles/css/userCommentsSection.less"
+  },
+  {
+    "outputFile": "Styles/css/environmentSection.css",
+    "inputFile": "Styles/css/environmentSection.less"
+  },
+  {
+    "outputFile": "Styles/css/userQuestionsSection.css",
+    "inputFile": "Styles/css/userQuestionsSection.less"
+  },
+  {
+    "outputFile": "Styles/css/customRadio.css",
+    "inputFile": "Styles/css/customRadio.less"
+  },
+  {
+    "outputFile": "Styles/css/dashboardSection.css",
+    "inputFile": "Styles/css/dashboardSection.less"
+  },
+  {
+    "outputFile": "Styles/css/marketingStyles.css",
+    "inputFile": "Styles/css/marketingStyles.less"
+  },
+  {
+    "outputFile": "Styles/css/userfeedback.css",
+    "inputFile": "Styles/css/userfeedback.less"
+  },
+  {
+    "outputFile": "Styles/css/userSurveySection.css",
+    "inputFile": "Styles/css/userSurveySection.less"
+  },
+  {
+    "outputFile": "Styles/css/customCheckbox.css",
+    "inputFile": "Styles/css/customCheckbox.less"
+  }
+]

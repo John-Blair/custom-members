@@ -1,0 +1,18 @@
+﻿@inherits UmbracoViewPage<EcUserQuestionsSection>
+@{
+
+	Html.RequiresCss("~/styles/css/userQuestionsSection.css");
+	Html.RequiresCss("~/styles/css/userfeedback.css");
+
+	Html.RequiresCss("~/styles/css/customRadio.css");
+	Html.RequiresJs("~/scripts/ec/jquery.customRadio.js");
+	Html.RequiresJs("~/scripts/ec/userQuestionsSection.js");
+
+}
+<section class="page-section user-questions-section @Model.Container">
+
+
+	<jb-user-questions></jb-user-questions>
+
+
+</section>

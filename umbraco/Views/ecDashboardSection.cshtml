@@ -1,0 +1,16 @@
+﻿@inherits UmbracoViewPage<EcDashboardSection>
+@using ClientDependency.Core.Mvc;
+@{
+	// Dashboard - widget default styling.
+	Html.RequiresCss("~/App_Plugins/jbutilities/assets/css/jbspa.min.css");
+
+	// Overrides.
+	Html.RequiresCss("~/styles/css/dashboardSection.css");
+
+
+}
+	<section class="page-section dashboard-section @Model.Container">
+
+		<jb-spa-framework title="@Model.Title" subtitle="@Model.Subtitle"></jb-spa-framework>
+
+	</section>

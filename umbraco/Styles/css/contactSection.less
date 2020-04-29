@@ -1,0 +1,37 @@
+﻿@import "colors.less";
+
+.page-section + .contact-section {
+  //margin-top:20px; // Give some spacing from any previous section - not needed as page title has top margin.
+}
+
+.contact-section {
+    position: relative;
+
+    // Fix for anchors.
+    :target:before {
+    content:"";
+    display:block;
+    height:132px; /* fixed header height*/
+    margin:-132px 0 0; /* negative fixed header height */
+    }
+
+    /* Control number of lines on display */
+    .text-area {
+         min-height:250px !important;
+    }
+    
+    .field-validation-error{
+        color: red;
+    }
+    .form-horizontal .control-label {
+        text-align: left;
+    }
+}
+
+
+
+
+
+
+
+

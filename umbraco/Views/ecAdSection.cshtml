@@ -1,0 +1,38 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<EcAdSection>
+@{
+    EcAdSection adSection = Model;
+
+    Html.RequiresCss("~/styles/css/adSection.css");
+
+    var container = Model.Container.EmptyIfNull().NullIfEmpty() ?? "container-fluid";
+    var adContainerClasses = Model.AdContainerClasses.EmptyIfNull();
+    var width = Model.Width.EmptyIfNull();
+    var height = Model.Height.EmptyIfNull();
+    string placeholderUrl = Model.Placeholder != null ? Model.Placeholder.Url: string.Empty;
+
+    var backgroundImageStyle = string.Empty;
+    var widthStyle = string.Empty;
+    var heightStyle = string.Empty;
+
+    if (width.Length >0)
+    {
+        widthStyle = "width:" + width + ";";
+
+    }
+     if (height.Length >0)
+    {
+        heightStyle = "min-height:" + height + ";";
+
+    }
+    if (placeholderUrl.Length > 0)
+    {
+        backgroundImageStyle = "background-image:url('" + placeholderUrl + ")');";
+    }
+
+}
+<section class="page-section ad-section @container @adContainerClasses" >
+	<div class="ad-defaults " style="@width  @height  @backgroundImageStyle">
+        @Html.Raw(Model.AdUnitHtml)
+	</div>
+
+</section>

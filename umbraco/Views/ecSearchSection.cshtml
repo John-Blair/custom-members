@@ -1,0 +1,20 @@
+﻿@inherits UmbracoViewPage
+@{
+
+    Html.RequiresCss("~/styles/css/searchSection.css");
+
+    //Require bloodhound search predictor with typeahead so go for the bundle package.
+    Html.RequiresJs("~/Scripts/typeahead.bundle.js");
+    Html.RequiresJs("~/Scripts/ec/searchSection.js");
+
+}
+
+<section class="page-section search-section container">
+    <div class="search-container">
+        @* Use an id on the search box to set focus as typeahead copies all other attributes.*@
+        <input id="searchBox" class="search" type="text" placeholder="Search" autofocus/>
+        <button class="search"><i class="fas fa-search"></i></button>
+    </div>
+
+</section>
+

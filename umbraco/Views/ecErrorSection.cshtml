@@ -1,0 +1,60 @@
+﻿@inherits UmbracoViewPage<EcErrorSection>
+@using System.Web.Hosting
+@using Umbraco.Core
+@using System.Threading
+@{
+    int statusCode = 200;
+    var url = Model.Url(mode: UrlMode.Absolute);
+    var path = Server.MapPath("~/Error");
+
+     Html.RequiresCss("~/styles/css/errorSection.css");
+}
+    <div class="container error-section">
+        <p>@Html.Raw(EnvironmentService.Environment())</p>
+        <p>Error files:@path</p>
+        <p>Umbraco.Core.UseHttps: @System.Configuration.ConfigurationManager.AppSettings["Umbraco.Core.UseHttps"]</p>
+        <hr />
+        <br />
+        @using (Html.BeginUmbracoForm("StatusCode", "Error", null, new { @class = "form-inline" }))
+        {
+                    statusCode = 200; //ok
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="200 ok" class="btn btn-primary" />
+        }
+
+        @using (Html.BeginUmbracoForm("StatusCode", "Error",null, new { @class = "form-inline" }))
+        {
+
+                    statusCode = 400;
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="400 bad request" class="btn btn-primary" />
+        }
+        @using (Html.BeginUmbracoForm("StatusCode", "Error",null, new { @class = "form-inline" }))
+        {
+
+                    statusCode = 401;
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="401 Unauthorized" class="btn btn-primary" />
+        }
+        @using (Html.BeginUmbracoForm("StatusCode", "Error",null, new { @class = "form-inline" }))
+        {
+
+                    statusCode = 403;
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="403 Forbidden" class="btn btn-primary" />
+        }
+        @using (Html.BeginUmbracoForm("StatusCode", "Error",null, new { @class = "form-inline" }))
+        {
+
+                    statusCode = 404;
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="404 Not Found" class="btn btn-primary" />
+        }
+        @using (Html.BeginUmbracoForm("StatusCode", "Error",null, new { @class = "form-inline" }))
+        {
+
+                    statusCode = 500;
+                @Html.HiddenFor(m => statusCode)
+                <input type="submit" value="500 Internal Server Error" class="btn btn-primary" />
+        }
+    </div>

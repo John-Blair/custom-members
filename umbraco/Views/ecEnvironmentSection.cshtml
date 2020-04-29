@@ -1,0 +1,39 @@
+﻿@inherits UmbracoViewPage<EcEnvironmentSection>
+@{
+    var serverVariables = HttpContext.Current?.Request?.ServerVariables;
+
+    var i = 1;
+    Html.RequiresCss("~/styles/css/environmentSection.css");
+}
+    <div class="container environment-section">
+        <p>@Html.Raw(EnvironmentService.Environment())</p>
+
+
+        @if (Model.ShowServerVariables && ( serverVariables != null)  && (serverVariables.Count > 0) )
+        {
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>Server Variables</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th class="col-md-3">Variable</th>
+                                <th  class="col-md-9">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var key in serverVariables.Keys)
+                            {
+                                <tr>
+                                    <td>@key</td>
+                                    <td>@serverVariables[key.ToString()]</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+    </div>

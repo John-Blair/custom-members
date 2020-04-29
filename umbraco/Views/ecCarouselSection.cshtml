@@ -1,0 +1,110 @@
+﻿@inherits UmbracoViewPage<EcCarouselSection>
+@using UmbracoModel = Umbraco.Web.Models;
+@using ClientDependency.Core.Mvc;
+@*@using Merchello.Web.Models.VirtualContent;*@
+@{
+
+    EcCarouselSection carouselSection = Model;
+    IEnumerable<EcCarouselSlide> carousel = carouselSection.Carousel;
+
+    // Featured Products option instead of given list of slides.
+    if (carouselSection.UseFeaturedProducts)
+    {
+        // Override the basic carousel.
+        carousel = null; ;
+    }
+
+    Html.RequiresCss("~/styles/css/carouselSection.css");
+    Html.RequiresJs("~/scripts/ec/carouselSection.js");
+    // Doc Types stored in grid layout do not have valid node ids.
+    long carouselSectionId = new int().UniqueId();
+
+    string container = Model.Container;
+}
+
+@if ((carousel != null && carousel.Any()))
+{
+    <div class="page-section carousel-section @container carousel slide" data-ride="carousel" id="@carouselSectionId">
+        <div class="carousel-inner" role="listbox">
+            @{
+                int slideCount = 0;
+
+                if (carousel != null)
+                {
+                    foreach (EcCarouselSlide slide in carousel.Where(x => x.IsVisible()))
+                    {
+                        string title = slide.SlideTitle;
+                        string subtitle = slide.SlideSubtitle;
+                        string imageUrl = slide.SlideImage != null ? slide.SlideImage.Url : "/img/carousel.jpg";
+                        var  link = slide.SlideLink ?? new UmbracoModel.Link();
+                        var linkName = link.Name.EmptyIfNull().NullIfEmpty();
+                        var scriptName = slide.ScriptName.EmptyIfNull().NullIfEmpty();
+
+                        <div class="item @(slideCount == 0 ? "active" : "")">
+                            <div class="jumbotron carousel-hero" style="background-image:url('@(imageUrl)');">
+                                <h2 class="hero-title">@title</h2>
+                                <p class="hero-subtitle">@subtitle</p>
+                                @if (linkName != null && scriptName == null)
+                                {
+                                    <p><a class="btn btn-primary btn-lg hero-button" role="button" target="@(link.Target)" href="@link.Url">@link.Name</a></p>
+                                }
+                                else if (scriptName != null)
+                                {
+                                    <p><button class="btn btn-primary btn-lg hero-button" role="button" onclick="javascript:@Html.Raw(scriptName)">@link.Name</button></p>
+                                }
+                            </div>
+                        </div>
+                        slideCount++;
+                    }
+
+                }
+                else
+                {
+                    @*// Featured products.
+                foreach (IProductContent productContent in carouselSection.FeaturedProducts)
+                {
+                    string title = productContent.Name;
+                    string subtitle = "";
+                    string url = productContent.Url;
+
+                    // Access the first image for the product.
+                    var imageCollectionProperty = productContent.GetProperty("image");
+                    var imageUrl = string.Empty;
+
+                    if (imageCollectionProperty.HasValue)
+                    {
+                        var imageCollection = imageCollectionProperty.Value as List<IPublishedContent>;
+                        // TODO: Default image if no image configured?
+                        if (imageCollection?.Count > 0)
+                        {
+                            imageUrl = imageCollection[0].Url;
+                        }
+                    }
+
+                    <div class="item @(slideCount == 0 ? "active" : "")">
+                        <div class="jumbotron carousel-hero" style="background-image:url('@(imageUrl)');">
+                            <h2 class="hero-title">@title</h2>
+                            <p class="hero-subtitle">@subtitle</p>
+                            <p><a class="btn btn-primary btn-lg hero-button" role="button"  href="@url">@title</a></p>
+                        </div>
+                    </div>
+                    slideCount++;
+                }*@
+                }
+            }
+        </div>
+        <div>
+            <a class="left carousel-control" href="#@carouselSectionId" role="button" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i><span class="sr-only">Previous</span></a>
+            <a class="right carousel-control" href="#@carouselSectionId" role="button" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i><span class="sr-only">Next</span></a>
+        </div>
+        <ol class="carousel-indicators">
+            @for (int i = 0; i < slideCount; i++)
+            {
+            <li data-target="#@carouselSectionId" data-slide-to="@i" class="@(i == 0 ? "active" : null)"></li>
+            }
+        </ol>
+    </div>
+
+}
+
+

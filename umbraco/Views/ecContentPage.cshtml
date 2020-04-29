@@ -1,0 +1,14 @@
+﻿@inherits UmbracoViewPage<EcContentPage>
+@{
+
+    EcContentPage contentPage = Model;
+    var pageSectionsContiner = contentPage.Descendant<EcPageSectionsContainer>();
+    if (pageSectionsContiner != null)
+    {
+        var pageSections = pageSectionsContiner.Children();
+        foreach (IPublishedContent pageSection in pageSections)
+        {
+            @Html.Partial("_PageSectionRenderer", pageSection, new ViewDataDictionary { })
+        }
+    }
+}

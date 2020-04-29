@@ -1,0 +1,135 @@
+@import "colors.less";
+
+.page-section + .footer-section {
+    //margin-top:20px; // Give some spacing from any previous section - not needed.
+   
+}
+.img-center{
+    margin: 0 auto;
+    display: block;
+}
+
+
+
+.footer-section {
+    position: relative;
+    z-index: 50;
+    .blue-grey-gradient;
+    // Entire menu black.
+    color: @text-color;
+
+    .image-row {
+        img {
+            .img-center;
+        }
+    }
+    // Centre text in the copyright row.
+    .copyright-row {
+        text-align: center;
+        margin-top: 10px;
+        font-size: 18px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    // Separate the copyright notice from the links.
+    .copyright {
+        margin-right: 20px;
+    }
+    // Copyright links inline.
+    ul.copyright-menu-col {
+        list-style: none;
+        display: inline-block;
+        margin: 0;
+        // Odd : this causes the vertical scroll to not display on chrome.
+        margin-bottom: 2px;
+        padding: 0;
+
+        & > li {
+            display: inline-block;
+            padding-right: 5px;
+            padding-left: 5px;
+
+            & a {
+                color: @text-color;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                font-size: 16px;
+                padding-left: 5px;
+                padding-right: 5px;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    outline: 0;
+                    color: @text-color;
+                    text-decoration: none;
+                    background-color: @link-bg-color;
+                }
+            }
+        }
+    }
+
+    .footer-menu-row {
+        display: inline-block;
+        //min-width: 25%;
+        vertical-align: top; // Middle short column was aligned at the bottom.
+        text-align: left;
+    }
+
+
+    .footer-menu-rows {
+        text-align: center;
+        vertical-align: top;
+
+        h2 {
+            font-size: 16px;
+            line-height: 16px;
+            color: @text-color;
+            display: block;
+            padding-top: 0;
+            padding-bottom: 0;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin: 10px 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+
+    ul.footer-menu-col {
+        list-style: none;
+        margin: 10px 10px;
+        margin-top: 0px;
+        text-align: left;
+        padding: 0px;
+
+        & > li {
+            text-align: left;
+
+            & a {
+                font-size: 16px;
+                line-height: 16px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 5px;
+                padding-right: 5px;
+                color: @text-color;
+                display: block;
+                //margin: 0 10px;
+                white-space: nowrap;
+                text-align: left;
+
+                &:hover,
+                &:focus,
+                &:active {
+                    outline: 0;
+                    color: @text-color;
+                    text-decoration: none;
+                    background-color: @link-bg-color;
+                }
+            }
+        }
+    }
+}
+    
+
